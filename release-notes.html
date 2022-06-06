@@ -1,0 +1,2346 @@
+<!doctype html>
+<html>
+<head>
+
+<title>Canvas Legacy - Release notes</title>
+
+<link rel="stylesheet" href="css/normalize.css" type="text/css" />
+
+<style>
+
+.container {
+	margin-top: 20px;
+	width: 990px;
+	margin: 0 auto;
+    padding-bottom: 100px;
+}
+
+.release__version {
+	color: #2895f1;
+}
+
+h2 {
+	border-bottom: 1px solid #e5e5e5;
+}
+
+li {
+	margin: 6px 0;
+}
+
+a, a:visited {
+    color: #2895f1;
+}
+
+</style>
+
+<meta http-equiv="cache-control" content="no-cache, must-revalidate, post-check=0, pre-check=0" />
+<meta http-equiv="cache-control" content="max-age=0" />
+<meta http-equiv="expires" content="0" />
+<meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT" />
+<meta http-equiv="pragma" content="no-cache" />
+
+</head>
+<body>
+
+<div class="container">
+	<h1>Canvas Legacy release notes</h1>
+	<div class="release">
+        <h2>
+            <span class="release__version">0.5.12</span> <span class="release__date">2022-05-23</span>
+        </h2>
+        <ul>
+            <li>Power
+                <ul>
+                    <li>Your ability and spell levels are now capped by your power level</li>
+                    <li>Warriors and rangers
+                        <ul>
+                            <li>Mana bar has been replaced with a power bar</li>
+                            <li>Dealing damage to mobs will fill your power bar and thus your ability levels</li>
+                            <li>Power will reset to 0 if you don't deal any damage for 10 seconds</li>
+                            <li>Once the power hits the soft cap (equal to level 40) it will start glowing and reset after 20 seconds
+                                <ul>
+                                    <li>Power will still increase past the soft cap during the 20 seconds timeout but it won't show in the bar</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>Mages
+                        <ul>
+                            <li>Power will automatically fill when standing still</li>
+                            <li>Power will reset on movement or when casting a spell</li>
+                            <li>No soft cap so max power will always cast the spell at spell book level (still respecting mana stone level)</li>
+                            <li>This means that your spell book level is evenly distributed along the power curve</li>
+                        </ul>
+                    </li>
+                    <li>Critical hit
+                        <ul>
+                            <li>You now have a 5% chance of dealing a critical hit adding 50% extra damage</li>
+                            <li>Power adds to the critical hit chance (up to +20%)</li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li>Lumerium items
+                <ul>
+                    <li>The Gnome Shop now sells a few new items: Gnome charger, gnome battery and lumerium generator</li>
+                    <ul>
+                        <li>By using a lumerium generator powered by a gnome battery you can process various items</li>
+                        <li>To charge a gnome you need 5 green lumen, 5 red lumen and 5 blue lumen</li>
+                        <li>Chest -> Gnome charger -> Gnome battery</li>
+                        <li>Each charged gnome has 10 power. Once power is depleted in the battery the gnome will disappear</li>
+                        <li>Place a lumerium generator next to a charged gnome battery and insert a valid item to activate it</li>
+                        <li>Diamond: using a diamond in a generator will require 50 power and spawn a lumerium ore vein somewhere in the overworld</li>
+                        <li>Lumerium gear: using lumerium ingots you can now craft lumerium sword, lumerium bow, lumerium mana stone and lumerium necklace in the crafting table</li>
+                        <li>Lumerium gear can be leveled up in a lumerium generator and will require more and more gnome power the higher level it is</li>
+                        <li><strong>Important</strong>: when processing an item the current power will start winding down unless it's actively powered by a charged gnome battery. Since it takes longer for a gnome to be charged than a gnome battery to be consumed this means you will need to queue up the amount of charged gnomes needed before you start processing or the power and gnomes will go to waste</li>
+                        <li>Lumerium necklace counts as jewelry so it takes up the same equipment slot as rings</li>
+                    </ul>
+                </ul>
+            </li>
+            <li>Xazar's Domain
+                <ul>
+                    <li>When you have acquired a lumerium item you may notice it's useless in the overworld. Lumerium gear can only be used in certain instances, the first being the domains of Xazar</li>
+                    <li>Xazar's Domain is an instanced dungeon for up to 4 players and costs 100 lumen shards to open</li>
+                    <li>You can restrict the dungeon to solo, everyone or your guild only</li>
+                    <li>The dungeon is open until no-one has been active in it for 20 minutes</li>
+                    <li>Runes
+                        <ul>
+                            <li>Mobs and chests drop runes as loot, which can be socketed into lumerium gear at the runemaster</li>
+                            <li>Runes have level requirements for the respective lumerium items</li>
+                            <li>Killing mobs will give you lumen XP which grants you lumen levels (lumen level and progress can be shown in the character sheet) and aside from leveling up your lumen gear level to match the rune you also need to be at least that lumen level to use it</li>
+                            <li>The requirement is decided by the rune, not the lumerium gear level (so you can safely level it up and still use it as long as it's socketed with a rune that is below or same as your level)</li>
+                        </ul>
+                    </li>
+                    <li>Mobs also drop lumen daler which can be used in the lumen shop</li>
+                    <li>Portal stones
+                        <ul>
+                            <li>You can buy portal stones from the lumen shop, which are used to open a portal back to the instance town</li>
+                            <li>The portals are open until the dungeon is closed down or you open a new portal</li>
+                            <li>Portal stone cost increases the further you get</li>
+                        </ul>
+                    </li>
+                    <li>You can sell runes in the shop for lumen daler</li>
+                    <li>Finding a checkpoint portal will permanently register it for all active players in the dungeon, and be available in all subsequent instances</li>
+                    <li>You can pray at the shrine to heal and restore your stamina for free</li>
+                    <li>No PvP is allowed here</li>
+                    <li>When dying you will be sent to the shrine and healed but will lose 10% of the currently accumulated lumen XP toward next level</li>
+                    <li>Max level is currently 20</li>
+                    <li>Xazar's Domain is procedurally generated each time it's opened so you may get a broken world. Please report those in Discord</li>
+                </ul>
+            </li>
+            <li>Arrows revamp
+                <ul>
+                    <li>Crafting arrows will now give you a batch of arrows but they always have a 50% probability to break on impact</li>
+                    <li>There are new items to help you reduce arrow spill</li>
+                    <li>Trashing the old deprecated arrows will reimburse you the full crafting cost</li>
+                </ul>
+            </li>
+            <li>New stash UI
+                <ul>
+                    <li>There's now a new interface when using banks and chests</li>
+                    <li>The inventory is now always shown beneath and you can filter by item name through the new search bar</li>
+                    <li>Item attributes (rings, swords, runes etc) will now be displayed directly in the UI when selected</li>
+                    <li>Press an item twice on mobile to see the item description if available (hover as usual on desktop)</li>
+                </ul>
+            </li>
+            <li>Sheep above tier 1 now require hay to produce wool. Hay can be found in Xazar's Domain</li>
+            <li>The eating popup is now smaller and should not stick around when you're not eating or behave in strange ways</li>
+            <li>Gnomes that are carrying items no longer block gnomes that are not carrying items</li>
+            <li>Gnomes no longer pathfind through doors
+                <ul>
+                    <li>This is very useful when queuing a lot of gnomes for charging</li>
+                </ul>
+            </li>
+            <li>Local chat in instanced dungeons and box will now propagate to all players in that instance regardless of distance</li>
+            <li>Interpolation mode should now render correctly for mounts, whirlwind and clouds</li>
+            <li>Fire bomb arrow recipe has been changed</li>
+            <li>Fire bomb arrows now start the fire on bigger enemies where the arrow actually hits</li>
+            <li>Split shot damage now halves for every subsequent hit</li>
+            <li>All bosses have been buffed</li>
+            <li>Standing inside bosses will now make them deal 75% of your max HP as non-physical damage instead of their normal attack</li>
+            <li>Spider Queen now drops strings</li>
+            <li>Slime Guy sells a new item</li>
+            <li>When hitting a frozen target it will now half the remaining freeze duration</li>
+            <li>Slime Friends, Mushroom Colonies, Spider Boots and Hell Boots are now Epic items instead of Legendary</li>
+            <li>Items and icons with levels are now prefixed with "L" to differentiate from item quantity</li>
+            <li>Going AFK in a dungeon will now kick you from the dungeon (for Xazar's Domain you can re-enter as long as the instance is still active)</li>
+            <li>Glorb Dungeon now correctly hides unexplored rooms again</li>
+            <li>You can now dismantle Fusing Tables</li>
+            <li>You can no longer select the FPS/ping meter text and the click goes through to the underlying element (e.g. chat tabs on mobile)</li>
+            <li>When stashing your equipped weapon or tool it should no longer incorrectly keep showing it as equipped</li>
+            <li>Lights on green lumen stones now work again</li>
+            <li>Some minor optimizations for shadows</li>
+            <li>You no longer get a message about weapon being damage when walking into walls</li>
+            <li>Fixed some typos</li>
+            <li>Fixed some more null texts and names</li>
+            <li>Fixed some cases where effect sprites get stuck if you move between zones before the sprite duration is up</li>
+            <li>Finally, the amazing fanfics by Klinthios have a new home at <a href="https://canvaslibrary.medium.com/">Canvas Library</a> with a lot of new stories, such as the Gnoll Book of Gnolledge and Travels With the Taxman. Go check them out!</li>
+        <h2>
+            <span class="release__version">0.5.11</span> <span class="release__date">2022-03-19</span>
+        </h2>
+        <ul>
+            <li>Oak
+                <ul>
+                    <li>Oak trees dropping oak are now spawned randomly among other trees</li>
+                    <li>Oak bows
+                        <ul>
+                            <li>All bows now have durability but oak bows have a much larger durability base, are affected by blacksmithing and can be repaired</li>
+                            <li>Oak bows can also be infused with a beetle (found in trees)</li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li>Fusing table
+                <ul>
+                    <li>All ground crafting (except treasure maps) have been moved to fusing tables:
+                        <ul>
+                            <li>Combine gems</li>
+                            <li>Infuse swords with gems</li>
+                            <li>Combine beetles</li>
+                            <li>Infuse oak bows with beetles</li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li>Mining and woodcutting changes
+                <ul>
+                    <li>Mining and woodcutting speed now scales much much slower</li>
+                    <li>Copper, silver, gold and diamond pickaxes/axes now have the same speed but each tier above copper gives you an additional stone or log (does not affect noble metals)</li>
+                    <li>You can only get gems and beetles from silver and above. The chance scales with material (silver lowest, diamond highest)</li>
+                    <li>Mining and woodcutting speed is now synced to movement speed 
+                        <ul>
+                            <li>This means speed increase from leveling is phased, increasing each time you hit a new divisor</li>
+                            <li>A side effect of this is that speed boots will now increase the mining and woodcutting speed</li>
+                        </ul>
+                    </li>
+                    <li>For people who miss the ultraspeed and strip mining there's still a way to get that <em>Legacy</em> Canvas Legacy experience</li>
+                </ul>
+            </li>
+            <li>𓀘 box
+                <ul>
+                    <li>Buy it from the gnome merchant and open it</li>
+                </ul>
+            </li>
+            <li>Drop rate of noble metals outside mines have been greatly nerfed</li>
+            <li>Fire swords now cost 1 basic red gem per level to repair (-1 the tier, so tier 1 fire sword costs no gems and tier 5 fire sword costs 4 gems)</li>
+            <li>You can now lock your equipped item from the abilities/spells tab
+                <ul>
+                    <li>This should make it easier to loot, especially on mobile, preventing you from accidentally unequipping your weapon</li>
+                    <li>There may also be a new item making looting even easier</li>
+                </ul>
+            </li>
+            <li>New sounds when:
+                <ul>
+                    <li>Taking damage</li>
+                    <li>Crafting</li>
+                    <li>Repairing</li>
+                </ul>
+            </li>
+            <li>Buffs and nerfs
+                <ul>
+                    <li>Buffed:
+                        <ul>
+                            <li>Fireball</li>
+                            <li>Split Shot</li>
+                        </ul>
+                    </li>
+                    <li>Nerfed:
+                        <ul>
+                            <li>Whirlwind</li>
+                            <li>Earthquake</li>
+                            <li>Chain Lightning</li>
+                        </ul>
+                    </li>
+                    <li>Working on a new scaling algorithm with diminishing returns that should make all abilities and spells more balanced</li>
+                </ul>
+            </li>
+            <li>Iron tools and gear are now affected by blacksmithing</li>
+            <li>You can no longer place letters on other peoples' plots</li>
+            <li>You now get stopped after first try when trying to walk into a locked door</li>
+            <li>You can no longer pick up broken walls and other null objects</li>
+            <li>Added some more easter eggs</li>
+            <li>It now says how much it costs to play word and eye games</li>
+            <li>Green fish no longer affects blacksmithing</li>
+            <li>You can now allow portals to be opened to your plot</li>
+            <li>In portrait mode (on mobile) the chat will now cover the full screen and be attached to the bottom so that the input is always visible when virtual keyboard is active</li>
+            <li>You can now activate things in the hotbar while moving on mobile</li>
+            <li>Tapping the hotbar on mobile will no longer show item description</li>
+            <li>Fixed a bug with firewall hitting enemies adjacent to it</li>
+            <li>Made some more server game loop optimizations</li>
+            <li>Optimized socket message sizes for some of the most common packets</li>
+            <li>Removed more useless log messages polluting the server log, especially on islands</li>
+            <li>Fixed some typos</li>
+            <li>Klinthios, well-known fish tycoon and owner of K Fish chain store, has blessed us with the very first fanfic set in the Canvas Legacy universe. <a href="https://jonnykeenblog.wordpress.com/2022/03/17/blood-on-a-grass-canvas-a-canvas-legacy-fanfic-part-1/">Check it out!</a></li>
+        </ul>
+        <h2>
+            <span class="release__version">0.5.10</span> <span class="release__date">2022-03-02</span>
+        </h2>
+        <ul>
+            <li>Plot decay on inactivity
+                <ul>
+                    <li>If you haven't logged in in 60 days your plots will now be wiped</li>
+                    <li>Items on plots and in chests as well as your pets will be sent to the post office</li>
+                    <li>Islands will be unlinked and put in hibernation</li>
+                    <li>Important: Walls, floors and plot items like Crafting Tables, Curiosity Devices, Spore Colonies etc are not sent to the post office and will be permanently destroyed. You also won't get the land tax back (in contrary to when abandoning a plot manually)</li>
+                </ul>
+            </li>
+            <li>Unlink islands
+                <ul>
+                    <li>You can now unlink an island from a plot through a plot sign</li>
+                    <li>The island will be put in hiberation which means it's saved but won't be running</li>
+                    <li>There's currently no way to start up an island again but this will be possible in the future</li>
+                </ul>
+            </li>
+            <li>Boiling oil
+                <ul>
+                    <li>The King can now indirectly defend their castle by pouring boiling oil on entrances to the throne room</li>
+                    <li>Oil deals damage every 2 seconds for 1 minute: 10% damage when boiling and 50% damage when burning (when poured it boils for a while before erupting into flames)</li>
+                    <li>To pour oil you need to give olive oil and coal to the Kingsguards Commander. Olive oil is made from olives</li>
+                    <li>New crop: olive tree
+                        <ul>
+                            <li>Currently, the only way to obtain olive tree saplings is through the AMM</li>
+                            <li>Once fully grown olive trees will keep producing olives without having to replant as long as it's watered</li>
+                            <li>You can use a shovel to get the sapling back</li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li>Word game
+                <ul>
+                    <li>You all know what this is based on</li>
+                    <li>Entrance is in the water fortress</li>
+                </ul>
+            </li>
+            <li>Auto irrigation
+                <ul>
+                    <li>No, this is not a watering can or sprinklers or even a new item. Instead...</li>
+                    <li>The King can now support their citizens by automatically watering crops on plots within their kingdom. It comes with a cost though: 1 wood and 1 coin per watering</li>
+                </ul>
+            </li>
+            <li>You can no longer fish on islands</li>
+            <li>You can now dismantle chests next to plots</li>
+            <li>Whirlwind now only hits an enemy once per swirl</li>
+            <li>Smelting down items in the furnace now gives you back the crafting cost minus 2 ingots instead of 1</li>
+            <li>Loot bags will now be sent to the post office even if there's no room to spawn the corpse of a murderer</li>
+            <li>When dying on a plot and it can't find a spot to spawn the corpse, the loot will now be sent outside the plot</li>
+            <li>Fixed some broken fog in certain dungeon configurations, preventing you from finishing the dungeon</li>
+            <li>It no longer incorrectly says that you've supplied to the LP in the AMM when you cannot afford it</li>
+            <li>Updated some item description texts</li>
+            <li>Fixed some more "null" texts</li>
+        </ul>
+        <h2>
+            <span class="release__version">0.5.9</span> <span class="release__date">2022-02-21</span>
+        </h2>
+        <ul>
+            <li>Loot bags
+                <ul>
+                    <li>When dying your loot is now contained to a loot bag on your corpse</li>
+                    <li>If you PK someone their loot bag will be locked until the PK timer runs out
+                        <ul>
+                            <li>If the PK dies before the timer runs out all the looted victims' bags will be sent to their post box</li>
+                            <li>If someone else loots the murdered victim the loot bag is immediately sent to their post box</li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li>New craftable item: Dislocator
+                <ul>
+                    <li>Deploy adjacent to a plot or player town a PK is hiding in to pull them out and trap them for 3 seconds</li>
+                    <li>The PK will get a warning so they can escape the plot on their own but doesn't know how long the deploy time is</li>
+                </ul>
+            </li>
+            <li>PKs hiding in dungeons will now show up on the map on the entrance of the dungeon</li>
+            <li>Skulls
+                <ul>
+                    <li>When killing and looting a player you will get their skull together with their loot bag</li>
+                    <li>The skull has different sprites depending on if the dead player was a murderer or not</li>
+                </ul>
+            </li>
+            <li>The Swapper
+                <ul>
+                    <li>The Swapper is a new NPC in Southtown and Snowtown, easy to spot by their fancy suit and hat, that functions as an Automatic Market Maker (AMM)</li>
+                    <li>Players can buy and sell certain raw materials for a price that is automatically adjusted according to supply and demand</li>
+                    <li>In order for the AMM to function it uses a Liquidity Pool (LP) where players can lock up items and get an interest rate (a proportional cut of the 0.3% fee on every trade)</li>
+                    <li>You can withdraw your share of the LP at any time but the current exchange rate will be applied so you won't necessarily get the exact same amount of items back</li>
+                </ul>
+            </li>
+            <li>New item: Dust buster
+                <ul>
+                    <li>A ball of 100 smashed dust fish. When cooked on open fire it has a chance to give up to 20% more dust than just cooking the equivalent amount of plain dust fish</li>
+                </ul>
+            </li>
+            <li>Trashing a portal book in the trashcan will now give you between 5 and 10 blue stars</li>
+            <li>Triple shot nerfed</li>
+            <li>You can now plant spore colonies on the edge of your plot</li>
+            <li>Trading tables in Snowtown and Eastern Kingstown should now work</li>
+            <li>Some other improvements to the trading tables: you no longer get a popup when someone requests a trade. Instead you will see in the log when someone wants to trade. To accept just click their name in the list</li>
+            <li>New unique reward when finishing eye game on first try</li>
+            <li>Player towns now correctly show the guild name of the guild owning the town instead of your own guild name
+                <ul>
+                    <li>Player towns are getting a big overhaul in the future</li>
+                </ul>
+            </li>
+            <li>Hitting another player will no longer give you any skill gains</li>
+            <li>You now need to drink a genealogy potion potion in order to see blood lines in the pet popup as well</li>
+            <li>When using "Stuck?" on a plot it only takes 5 seconds to recall but will send you outside the plot (PKs will still get sent to Haven and need to wait the full 2 minutes)
+                <ul>
+                    <li>Also replaced the ugly browser's built-in confirmation prompt with the native CL prompt</li>
+                </ul>
+            </li>
+            <li>You can no longer open portals to a plot you do not own</li>
+            <li>On mobile, the last chat message will be shown next to the feed button (can be disabled in options)</li>
+            <li>On mobile you will now see full item description in the log when tapping an item. You can also now tap the overlay log to remove it (you can disable it completely from the options)</li>
+            <li>Popups no longer close on any key press but only when walking, pressing escape or space</li>
+            <li>When destroying a block a player is standing on they will no longer hover in air and instead fall down until they hit a solid block</li>
+            <li>Stable admin popup now has a max height and is scrollable</li>
+            <li>Fixed more subpixel rendering issues on devices like Google Pixel with uneven viewport widths</li>
+            <li>You now need to stable an actual horse in order to finish the horse mission</li>
+            <li>Skill scrolls now always give at least 1 skill point</li>
+            <li>Fixed one problem causing picks to autorepair. There may be others so please let me know in #bug-reports if you find more</li>
+            <li>Removed some useless debug log messages polluting the log making it harder to pinpoint errors in runtime</li>
+        </ul>
+        <h2>
+            <span class="release__version">0.5.8</span> <span class="release__date">2022-02-07</span>
+        </h2>
+        <ul>
+            <li>Arrows QoL
+                <ul>
+                    <li>Arrows landing on other arrows will now spill over to adjacent tiles (if there is no room it will still disappear)</li>
+                    <li>Arrows hitting special enemies without inventory (slimes, spider eggs etc) will now drop on the ground using the same logic</li>
+                    <li>Arrows hitting players also go on the ground</li>
+                    <li>Arrows landing on corpses will now be merged into the loot</li>
+                    <li>An enemy dying on an arrow will have the arrow added to their loot</li>
+                    <li>Let me know if there are any other situations where arrows still disappear!</li>
+                </ul>
+            </li>
+            <li>Added new common boss drop</li>
+            <li>Dead players will now have a skull symbol in front of their names in global chat</li>
+            <li>Earthquake now hits 2x2 and above enemies once in total instead of once per tile</li>
+            <li>New Map of Haven by JoshieGibby</li>
+            <li>Recipe changes
+                <ul>
+                    <li>Carts now cost stone instead of iron ingots</li>
+                    <li>Planks and stone slabs are now part of the standard recipes and no longer require a crafting table or saw/hammer on ground</li>
+                </ul>
+            </li>
+            <li>You can no longer kill stabled pets
+                <ul>
+                    <li>This kind of goes against the sandbox spirit but it's only temporary until I have a solution where you can't accidentally leave your pens unlocked, so you should still lock your stables</li>
+                    <li>I'm also thinking that there might be a bug where doors get unlocked by themselves. I've heard a lot of reports like that but haven't been able to reproduce it</li>
+                </ul>
+            </li>
+            <li>Fixed a lot of issues with stable signs
+                <ul>
+                    <li>Still a few things left to fix</li>
+                </ul>
+            </li>
+            <li>Durability of Wizard Hats has been doubled until Tailoring skill and restoration of clothes have been added</li>
+            <li>Weapons without durability no longer give you swordsmanship skill gains</li>
+            <li>There's now an Eraser in the palette on mobile</li>
+            <li>Added a small cooldown when sleeping to prevent some "spam sleep" issues</li>
+            <li>Mobs can no longer hit you across Z levels</li>
+            <li>It now asks you if you want to go back to fullscreen after switching tabs on mobile</li>
+            <li>In the tutorial, if buttons end up outside the UI on mobile it will tell you to go to fullscreen, try Landscape mode or Customize UI</li>
+            <li>Tutorial toast is no longer blocking the menu in Landscape mode</li>
+            <li>Fixed some subpixel rendering issues causing antialiasing and other strange problems (e.g. a tiny half pixel margin on the left on certain devices)</li>
+            <li>Fixed a subpixel rendering bug on the chat input making it jump slightly on switching</li>
+            <li>Fixed a bug where game froze when removing old blocks that were built on top level before height restriction was implemented (may still be cases like this for legacy blocks)</li>
+            <li>Fixed a visual glitch causing doors to get stuck</li>
+            <li>Fixed some typos and "null" texts</li>
+            <li>Added UI scaling in options
+                <ul>
+                    <li>Very experimental and you will need to manually adjust the elements with "Customize UI" after enabling</li>
+                    <li>While working on this I realized a much better solution is to put the regular "Scale" to 1x and then use the browser's built-in zoom to scale everything</li>
+                </ul>
+            </li>
+            <li>When abandoning a plot it now correctly unstables any pets on the plot</li>
+            <li>The abandon plot popup now highlights the fact that you will lose all your things on the plot 
+                <ul>
+                    <li>This is different from when a plot is forcibly abandoned (e.g. on map wipe). When that happens your things will normally be sent to the office</li>
+                </ul>
+            </li>
+        </ul>
+        <h2>
+            <span class="release__version">0.5.7</span> <span class="release__date">2022-02-01</span>
+        </h2>
+        <ul>
+            <li>Chest improvements
+                <ul>
+                    <li>You can now reorder items in a chest using drag'n'drop</li>
+                    <li>In the chest settings you can now choose which chest coins from sales go to and also toggle which chests goods should be taken from
+                        <ul>
+                            <li>If multiple chests are selected for cash storage it will put it in the first one</li>
+                            <li>If multiple chests are selected for goods storage it will take wares from all selected chests in sequential order</li>
+                            <li>If no chests have been selected it will fall back to using the first one on the plot</li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li>PK changes
+                <ul>
+                    <li>Doors will now automatically be breached on entering if a murderer is camping on their plot</li>
+                    <li>Murderers can no longer drop things, or use chests or trading tables
+                        <ul>
+                            <li>They need to be on the run and wait out the timer before they can profit</li>
+                        </ul>
+                    </li>
+                    <li>Murderers can no longer access locked guild doors</li>
+                </ul>
+            </li>
+            <li>Wearing the King's Crown now gives you same benefits as wearing the following:
+                <ul>
+                    <li>Wizard Hat, tier 4</li>
+                    <li>Mitre of Learning</li>
+                    <li>Chicken Hat</li>
+                </ul>
+            </li>
+            <li>Chain Lightning ring has been re-enabled
+                <ul>
+                    <li>Rings don't take any player levels into account and deal base damage</li>
+                </ul>
+            </li>
+            <li>Server gameloop has been optimized to smooth out tick rate</li>
+            <li>Mana stones are now affected by blacksmithing (copper and above)</li>
+            <li>Fire walls now hit enemies bigger than 1x1 on the full sprite</li>
+            <li>Archery and sorcery skills have been added as potential ring attributes</li>
+            <li>The first three times you die there will be an arrow pointing you to the nearest ankh (together with improved helper popup text)</li>
+            <li>The first time you enter an unprotected area there will now be a big popup informing you of the dangers
+                <ul>
+                    <li>Additionally, the message when exiting/entering protected area is now shown in a toast instead of log on desktop</li>
+                </ul>
+            </li>
+            <li>Added alternative recipe for mana potions (magic eggs + poison ivy)</li>
+            <li>New highly experimental interpolation mode for rendering
+                <ul>
+                    <li>Interpolation mode smooths out the transition between tiles</li>
+                    <li>It's very experimental and doesn't work well with certain things such as riding and a lot of other stuff</li>
+                </ul>
+            </li>
+            <li>Fixed a bug where stabled pets were lost in a confused state if they escaped a pen</li>
+            <li>Troopers no longer target stabled pets</li>
+            <li>Item info is now displayed directly in the crafting menu on desktop as well</li>
+            <li>When removing doors they will now be added to your inventory</li>
+            <li>Fixed a bug causing glitches when trying to drag'n'drop an item to the end of the inventory</li>
+            <li>Water is now rendered correctly at the most northern and western parts of the map</li>
+            <li>When resizing window in fullscreen the paint brush will now keep rendering correctly</li>
+            <li>Fixed a bug where hitting Spider Queen, Goblin Prince and Goat didn't respect attack types causing various glitches</li>
+            <li>Added more fallback logic and debug logs to try to identify the issue where peoples' emails are not attached correctly to their account</li>
+            <li>Fixed a bug where scheduler tried to scheule things in year 2074 after server restart</li>
+            <li>The "Stuck?" command now prompts a server dependent message</li>
+            <li>When you fill buckets and use up all your empty buckets it will now autoselect the water bucket</li>
+            <li>After buying a deed it will now close the popup so you don't accidentally buy multiple deeds</li>
+            <li>Discord mission now takes right-clicks into account</li>
+            <li>Fixed a bug where the ability and spell drop rate of Ghouls was miscalculated</li>
+        </ul>
+        <h2>
+            <span class="release__version">0.5.6</span> <span class="release__date">2022-01-15</span>
+        </h2>
+        <ul>
+            <li>New tutorial
+                <ul>
+                    <li>New players now start on a separate island where they will be guided through the basics</li>
+                    <li>Open browser in Incognito to test it out</li>
+                </ul>
+            </li>
+            <li>Quests
+                <ul>
+                    <li>Old tutorial NPCs have been replaced with new quest NPCs</li>
+                    <li>Currently give kill, gather and delivery quests but more will be added</li>
+                    <li>A lot of kill missions have been removed and replaced with new quest NPCs</li>
+                    <li>You can access active quests through the star icon, together with missions</li>
+                </ul>
+            </li>
+            <li>A lot of UX and UI fixes
+                <ul>
+                    <li>Too many to write down but you will notice</li>
+                </ul>
+            </li>
+            <li>A lot of mobile changes and fixes
+                <ul>
+                    <li>E.g. inventory etc are no longer displayed all the time but needs to be brought up by tapping the inventory icon (you can re-enable showing it all the time in the Options)</li>
+                </ul>
+            </li>
+            <li>Ground crafting is gone
+                <ul>
+                    <li>You can now craft all standard items through the new crafting menu</li>
+                    <li>You still need crafting tables to unlock all crafting recipes</li>
+                    <li>Fire swords and treasure maps still need to be crafted on ground due to some legacy stuff</li>
+                </ul>
+            </li>
+            <li>Some missions have been reworked to fit the new progression</li>
+            <li>You can no longer trigger instant things like food, arrows etc from the inventory. They need to be in the hotbar</li>
+            <li>Another big patch is in the works but has been postponed since I wanted the new tutorial out as soon as possible</li>
+        </ul>
+        <h2>
+            <span class="release__version">0.5.5</span> <span class="release__date">2021-10-29</span>
+        </h2>
+        <ul>
+            <li>Stone
+                <ul>
+                    <li>Stone replaces iron ore on regular mountain tiles</li>
+                    <li>Stone tools and sword have been added</li>
+                    <li>Iron ore (with new sprites) now spawns in veins</li>
+                    <li>Iron planks are now Stone slabs and are crafted with Stone instead of Iron ingots</li>
+                </ul>
+            </li>
+            <li>Furnaces, smelters and kilns
+                <ul>
+                    <li>Ingots are now made in furnaces (towns) and smelters (plots)</li>
+                    <ul>
+                        <li>Furnaces
+                            <ul>
+                                <li>Can be found next to anvils in towns</li>
+                                <li>Same cost for ingots as before (6 ores), instant and requires no fuel</li>
+                                <li>You can also use furnaces to smelt down items, which will give you back the ingot cost minus 1 (red gems will lose one level)</li>
+                            </ul>
+                        </li>
+                        <li>Smelters
+                            <ul>
+                                <li>Can only be placed on plots</li>
+                                <li>Ingots take 5 ores to craft but requires coal as fuel and a smelting duration depending on ore type</li>
+                            </ul>
+                        </li>
+                        <li>Kilns
+                            <ul>
+                                <li>Can only be placed on plots</li>
+                                <li>Converts wood into charcoal</li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <li>Smelter and kiln require a new monster drop to craft</li>
+                </ul>
+            </li>
+            <li>Durability has been greatly increased on all weapons and armor
+                <ul>
+                    <li>It is recommended to smelt down items with the old durability and recraft them</li>
+                </ul>
+            </li>
+            <li>Mounts QoL
+                <ul>
+                    <li>You can now teleport mounts between all public and private stables (costs 5 coins)</li>
+                    <li>When stabling mounts their cart and rein will be stashed as well</li>
+                    <li>You can use the Rescue service at public stables to teleport pets in the wild to that stable
+                        <ul>
+                            <li>There's a rescue fee of 30 coins when collecting your pet</li>
+                        </ul>
+                    </li>
+                    <li>Reined mounts will automtically be rescued to the nearest public stable if killed (except Nightmares which still require a Revive Token)</li>
+                    <li>Some touch-ups to the pop-up</li>
+                </ul>
+            </li>
+            <li>New egg mini game</li>
+            <li>Taming chickens
+                <ul>
+                    <li>It is now possible to tame chickens</li>
+                    <li>Blue chickens spawning magical eggs have been added</li>
+                    <li>All chickens have an egg dominance value deciding whether it will spawn their unique egg (regular eggs and magic eggs) or one of the colored bird eggs</li>
+                    <li>Eggs laid by chickens will now decay outside plots</li>
+                    <li>Other pets will eat regular eggs and magic eggs so don't keep them in the same stable</li>
+                </ul>
+            </li>
+            <li>Sheep
+                <ul>
+                    <li>You can use shears (new item) to shear wool from a sheep in a stable you own</li>
+                    <li>Wool is used to craft Wizard Hats which will now give you a passive mana regeneration boost depending on wool quality...</li>
+                    <li>Wool quality can be increased by breeding sheeps of different blood lines (the darker the wool the better the quality)</li>
+                    <li>Lineage
+                        <ul>
+                            <li>By drinking a Genealogy potion (new item, brewed with Magic eggs) you will see a visual representation of the sheep's genes and blood lines</li>
+                            <li>After taming a sheep you will also see their blood line in the pop-up</li>
+                            <li>You can breed two sheeps of same tier by putting them in the same stable, which will eventually spawn a higher tier lamb with their combined blood lines</li>
+                            <li>In order for a lamb to spawn the parents' blood lines cannot overlap (i.e. they need to have uniquely different blood lines) and there needs to be space in the enclosure as per the regular stable rules
+                                <ul>
+                                    <li>Example: Sheep with blood lines AB cannot mate with BC but can mate with CD, spawning a lamb with blood lines ABCD</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li>Mana potions are now quaffed instantly and restores 40% of your mana (quaff cooldown of 10 seconds is shared with other potions)
+                <ul>
+                    <li>Heads up: Mana potions will likely require Magic eggs when brewed in the future</li>
+                </ul>
+            </li>
+            <li>When hiring a Kingsguards half of the cost goes into a buffer that's released into the treasury chest when a new King is coronated</li>
+            <li>You can no longer take the throne with Kingsguards alive. You will still get flagged and attacked if trying to take it but the timer won't trigger at all so it's futile</li>
+            <li>Fixed critical bug not saving and respawning Kingsguards correctly (thanks taylorryver for helping me debug this!)</li>
+            <li>When a pet has been fully trained outside of stables it will show in the pop-up</li>
+            <li>Pets no longer block you unless you have a taming staff equipped</li>
+            <li>Roll call and transport birds can now be used independently of staffs</li>
+            <li>Archery and sorcery have been added to the skill scrolls</li>
+            <li>Bug fix: mana stones will not break if no spell is cast</li>
+            <li>Cleaned up sorting order in the crafting table</li>
+            <li>New safeguard for state consistency. It will now try to shut down the server as soon as it detects a possible anomaly, to prevent further discrepancies and server states getting out of sync (work in progress)</li>
+        </ul>
+
+
+        <h2>
+            <span class="release__version">0.5.4</span> <span class="release__date">2021-07-08</span>
+        </h2>
+        <ul>
+            <li>Overhaul of classes
+                <ul>
+                    <li>Abilities and spells now live in a sub menu where you can switch between inventory, class specific things and paint
+                        <ul>
+                            <li>The only way to trigger abilities and spells are through the hotbar. Ability/spell items are different from the ability/spell itself (differentiated by a yellow glow) so you will likely need to update your hotbar and assign the ability/spell instead</li>
+                            <li>Clicking on an ability/spell in the list will show stats about it</li>
+                            <li>Recipes list and drop button have been moved to the same sub menu when inventory is open</li>
+                        </ul>
+                    </li>
+                    <li>Abilities and spells are now upgradeable at the job centre, costing a certain amount of scrolls/books and coins for each level
+                        <ul>
+                            <li>Abilities/spells have been added as loot to most monsters. Different monsters drop different stuff and <em>they will <strong>only</strong> drop things related to your <strong>current class</strong></em> (so killing a monster as warrior only gives warrior abilities as loot)</li>
+                            <li>You can only have two abilities per class active at the same time (but unlimited spells). Use the checkbox at the job centre to toggle them</li>
+                            <li>You can no longer craft abilities/spells</li>
+                        </ul>
+                    </li>
+                    <li>Profession has been renamed to class</li>
+                    <li>Warrior
+                        <ul>
+                            <li>2 new abilities</li>
+                            <li>It no longer costs mana to activate an ability</li>
+                        </ul>
+                    </li>
+                    <li>Ranger
+                        <ul>
+                            <li>Rogue has been renamed to ranger (rogue will make a comeback in another form)</li>
+                            <li>Can no longer use bombs or knives</li>
+                            <li>Copper, silver, gold and diamond arrows have been added</li>
+                            <li>Fire bomb arrows have been added</li>
+                            <li>Bow is now equippable and has an inherent melee damage (kick?)</li>
+                            <li>You now shoot arrows using the hotbar by assiging the arrow to it and having the bow equipped</li>
+                            <li>Archery skill has been added which scales the same as swordsmanship (faster shooting and increased damage)</li>
+                            <li>4 new abilities</li>
+                        </ul>
+                    </li>
+                    <li>Mage
+                        <ul>
+                            <li>In order to cast a spell you need to equip a mana stone (new item) and then cast the spell through the hotbar (remember that you need to assign the spell from the spell menu and not the item itself)</li>
+                            <li>Mana stones have an inherent melee damage</li>
+                            <li>There are iron, copper, silver, gold and diamond mana stones. Each one has a max level for spells (e.g. if your spell level is 7 it will be capped by an iron mana stone which has a max level of 5)</li>
+                            <li>Upgrading spells increase their mana cost at the same interval as the max level of mana stones, so you can effectively use a mana stone to downgrade a spell for it to cost less (but of course also making it less powerful)</li>
+                            <li>Casting a spell will decrease the durability of the mana stone</li>
+                            <li>Sorcery skill has been added which scales the same as swordsmanship (faster casting and increased damage)</li>
+                            <li>Shock wave has been removed</li>
+                            <li>Mages can no longer use staffs</li>
+                        </ul>
+                    </li>
+                    <li>Tamer
+                        <ul>
+                            <li>Tamers have no abilities or spells (all current spells have been removed) but instead have...</li>
+                            <li>Birds
+                                <ul>
+                                    <li>On the map random flocks of chickens lay eggs you can pick up</li>
+                                    <li>Normal eggs are just for food (fried egg) but special eggs can be put in incubators (new item) to hatch a bird</li>
+                                    <li>Birds can then be put in bird's nests (new item) to lay more eggs</li>
+                                    <li>By having a staff equipped you can launch birds through the hotbar</li>
+                                    <li>Attack bird: This is for D3XU5. The bow is back!... kind of</li>
+                                    <li>Target bird: Low damage but makes your pets attack the target (attack bird has higher damage but doesn't aggro your pets on it). Replaces the "All, attack!" command</li>
+                                    <li>Signal bird: Same as and replaces the "All, seek and destroy!" command
+                                    <li>Transport bird: Same as and replaces the Summon Pets spell</li>
+                                    <li>Roll call bird: Same as and replaces the List pets command</li>
+                                    <li>Heal bird: Heals pets for 100hp in a 3x3 pattern on impact</li>
+                                    <li>New boss drop added for making more efficient bird farms (it will also have another use in the future)</li>
+                                </ul>
+                            </li>
+                            <li>You can no longer hit your own pets</li>
+                        </ul>
+                    </li>
+                    <li>All classes now insta eat food and consume potions when having a weapon equipped</li>
+                    <li>This is all work in progress and most likely very unbalanced so let me know if you have any feedback!</li>
+                </ul>
+                <li>Most UI elements are now customizable. Feed and inventory are also resizable (when inventory is resized it will become scrollable)</li>
+                <li>When detaching the log/chat feed upon customization an arrow to expand it will become available (so you can have a really small feed but expand it when you want to read)</li>
+                <li>You can now align the whole viewport to the left, center or right</li>
+                <li>Added experimental fullscreen mode. It has a lot of quirks, e.g. when you resize the window (including going from/to actual fullscreen in the browser) it will reset all UI. It's also a bit buggy. Sometimes a resize won't actually reposition the elements correctly but make it a jumbled mess (if it happens a reload or "Reset UI" should fix it). Work in progress...</li>
+                <li>Graphics have been renamed to Options</li>
+                <li>You can now disable shadows in the settings. The shadows require a lot of complex drawing operations so disabling them should give a performance boost when rendering new chunks.. but also make everything look flat</li>
+                <li>You can now disable the log overlay (when log messages overlay the chat window). Let me know if there are anything else that should be configurable</li>
+                <li>Fixed an issue making the bars too small when customizing with the new scale mode</li>
+                <li>Changing graphics settings no longer resets UI customization</li>
+                <li>FPS meter now also shows your ping</li>
+                <li>Hotbar is now visible on mobile</li>
+                <li>On mobile, clicking the inventory icon when already selected will bring up an expanded view of the inventory that is scrollable (there's space to the right for scrolling so you don't accidentally drag'n'drop items when scrolling)</li>
+                <li>Fixed instruction text for paint showing on mobile</li>
+                <li>Pressing escape when map is open will no longer open the menu behind it</li>
+                <li>Fixed bug not spawning bone piles on big enemies correctly</li>
+                <li>Tab will now focus the chat instead of opening the map</li>
+                <li>"Stuck?" has been moved to the top of the menu and visually enhanced</li>
+                <li>Fixed a bug causing some players to be frozen a while after loading the game</li>
+                <li>Fixed a bug where locked doors incorrectly rendered the open door sprite when it was closed</li>
+                <li>Firefox Mobile will no longer go to fullscreen when pressing "Start". You can still go to fullscreen through the menu</li>
+                <li>Ancient Wisp will no longer use its power attack on you if you’re standing on your plot</li>
+                <li>More server optimizations in the NPC update loop. If NPCs are acting weird, let me know!</li>
+                <li>More rendering engine optimizations</li>
+            </li>
+        </ul>
+
+        <h2>
+            <span class="release__version">0.5.3</span> <span class="release__date">2021-06-15</span>
+        </h2>
+        <ul>
+            <li>New rendering engine
+                <ul>
+                    <li>The 3rd iteration of trying to improve performance</li>
+                    <li>Still not 100% done but releasing it early to test it out</li>
+                    <li>The most visible change is that it renders clouds instead of blurring levels beneath player</li>
+                    <li>Added an algorithm for preventing frantic Z level layer switching when building rows of walls on higher levels</li>
+                </ul>
+            </li>
+            <li>Graphics options
+                <ul>
+                    <li>You can now choose between different scale modes and also switch back to the old rendering engine if you encounter any issues</li>
+                    <li>Scale Mode A is using a CSS transform while Scale Mode B is using regular CSS properties to scale it. The old Scale Mode is scaling the actual spritesheet (slow on many devices)</li>
+                    <li>Added an FPS meter and also the ability to disable grayscale when you are dead (causes bad performance on some devices)</li>
+                </ul>
+            </li>
+            <li>Target finding optimizations
+                <ul>
+                    <li>Completely remade how NPCs find targets, which is one of the most taxing operations on the servers</li>
+                    <li>This will lead to a slightly different behavior but hopefully doesn't introduce any major issues. However, if you notice something strange with the AI please let me know on Discord!</li>
+                    <li>Still much more that can be done to optimize this so work in progress</li>
+                </ul>
+            </li>
+            <li>Gnome Workshops and Lumen Stones now show units produced and units required per minute for input/output</li>
+            <li>Lumen Shard changes:
+                <ul>
+                    <li>The cost of queueing Kingsguards now increases by 1 for every 100 existing queue slots (0-99: 1, 100-199: 2 etc)</li>
+                    <li>World Boss prices have been increased by 1</li>
+                </ul>
+            </li>
+            <li>Glorb Dungeon now only gives a consolation prize of 5 Lumen Coins if you die in the first few rooms, so no more kamikaze farming of Red Lumen Stones</li>
+            <li>Fixed some incorrect pixels in shadows. Should look a bit better when scaled</li>
+            <li>Fixed an error preventing the game from loading in Firefox Mobile (there may be more, please report on Discord)</li>
+            <li>The Missions and Chat indicators now only blinks three times</li>
+            <li>Moving through a portal or dungeon stairs now halts the player</li>
+            <li>Eastern King's crown now has a different sprite to differentiate the Kings</li>
+            <li>"You're sending messages too fast!" trigger decreased to 0.5 seconds</li>
+            <li>Pressing M will now open the map</li>
+            <li>Disabled Spore Colonies on islands. The islands only run a subset of features right now and having NPCs (like Magic Mushrooms) on an island may corrupt it completely</li>
+            <li>Fixed some more "null" action texts</li>
+            <li>Added som easter eggs</li>
+        </ul>
+        <h2>
+            <span class="release__version">0.5.2</span> <span class="release__date">2021-06-02</span>
+        </h2>
+        <ul>
+            <li>Hotbar
+                <ul>
+                    <li>Keyboard shortcuts are now bound to the new hotbar</li>
+                    <li>Drag an item from your inventory to assign it (you can also select an item and click on the hotbar or use corresponding shortcut)</li>
+                    <li>Use right-click (or left-click while having the hotbar menu open) to remove an item</li>
+                    <li>Click the bars icon to switch hotbars</li>
+                    <li>QERFC is now 5-9 instead of 1-5</li>
+                    <li>Hotbars are only saved in the client for now</li>
+                </ul>
+            </li>
+            <li>Item lists
+                <ul>
+                    <li>In the bank and chests there's now a new icon in the bottom-right where you can add lists of items for easy withdrawal</li>
+                    <li>Simply withdraw the number of items you want and click "Save inventory as item list" to add a list</li>
+                    <li>From the item list popup you can also quickly deposit your whole inventory, making switching between builds easy</li>
+                    <li>Click the name of the item list to see what items are included</li>
+                    <li>Item lists are only saved in the client for now</li>
+                </ul>
+            </li>
+            <li>Customize UI
+                <ul>
+                    <li>From the Menu you can now drag'n'drop some parts of the UI (hotbar and health bars but aiming at making everything customizable)</li>
+                    <li>UI will be reset on changing zoom</li>
+                </ul>
+            </li>
+            <li>Blue lumen stones
+                <ul>
+                    <li>World bosses now reward blue lumen stones to the King when killed</li>
+                    <li>Blue lumen stones can be mined by gnomes but have no use yet. They will however be very important in a coming update</li>
+                </ul>
+            </li>
+            <li>You can now use Shift+Click to withdraw the whole stack from banks and chests</li>
+            <li>Crafting tables now show how much you have of each ingredient, and what's missing</li>
+            <li>Farms on islands no longer yield seeds, only crops</li>
+            <li>It now tries to figure out the proper zoom level and resolution when entering the game for the first time (disabled for Firefox due to performance issues)</li>
+            <li>Added a PSA for new players linking to the new <a href="https://canvaslegacy.fandom.com/wiki/Game_Tutorial">Game Tutorial</a> page on the <a href="https://canvaslegacy.fandom.com/">Wiki</a> (thanks Kes!)
+                <ul>
+                    <li>A completely new tutorial island is still in the works</li>
+                </ul>
+            </li>
+            <li>Backspace and arrow keys now repeat in chat window again (i.e. you can hold down backspace to delete multiple character, which was broken by the optimization in 0.5.1)</li>
+            <li>Fixed a bug with zoom being incorrectly applied to mobile, causing controls to disappear</li>
+        </ul>
+        <h2>
+            <span class="release__version">0.5.1</span> <span class="release__date">2021-05-28</span>
+        </h2>
+        <ul>
+            <li>Portal book
+                <ul>
+                    <li>New boss drop</li>
+                    <li>Open it and click on a portal scroll in your inventory to add it</li>
+                    <li>You can rename a scroll directly from the book by clicking the name</li>
+                    <li>Portal books are <span style="color: #c59d04">blessed</span>, meaning you will not lose them on death and they will be in your inventory after resurrection</li>
+                </ul>
+            </li>
+            <li>Alchemy table
+                <ul>
+                    <li>A separate crafting table for making potions</li>
+                    <li>Health potions
+                        <ul>
+                            <li>Health potions instantly heal 40% of your max HP but have a cooldown of 10 seconds</li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li>Cooking station
+                <ul>
+                    <li>Just another crafting table for all the food to clean up some clutter</li>
+                </ul>
+            </li>
+            <li>Glorb Dungeon changes
+                <ul>
+                    <li>You can now use a Recycling Badge to protect your gear from wear and tear when entering a dungeon</li>
+                    <li>You now heal automatically between rooms (you still need to manage the stamina manually though so bring those Slime Cakes)</li>
+                    <li>Slightly increased the power-up rate</li>
+                    <li>Increased and added more possible loot in the locked chests and challenge rewards</li>
+                    <li>The first few rooms in a new dungeon run now spawn less enemies</li>
+                </ul>
+            </li>
+            <li>Added Recycling Badge reward for trashing Curiosity devices</li>
+            <li>Selecting an item in the Crafting Table now shows name and description in the log
+                <ul>
+                    <li>You can also now click on a cost item to get the details</li>
+                </ul>
+            </li>
+            <li>You can now use Q, E, R, F and C to trigger inventory 1-5 (together with WASD this is a pretty nice one-handed mode)</li>
+            <li>Selecting inventory item with keyboard now triggers on "key down" instead of "key up", which should make it more responsive</li>
+            <li>Rewrote pet save logic to prevent chaos due to multiple servers trying to read/write same DB
+                <ul>
+                    <li>Pets that died to the pet plague of 2021 (™ aDabbleDooYa) have now been restored to the day of 0.5 release</li>
+                </ul>
+            </li>
+            <li>Added more logging to detect issues</li>
+            <li>Fixed a bug with Slime Attack causing issues with static enemies</li>
+            <li>Fixed a bug where loot didn't spawn due to slime being in the way</li>
+        </ul>
+        <h2>
+            <span class="release__version">0.5</span> <span class="release__date">2021-05-24</span>
+        </h2>
+        <ul>
+            <li>Player islands
+                <ul>
+                    <li>Island deeds can be purchased from the Deed Merchant</li>
+                    <li>Use the deed on your plot to open a portal to your island (one island per plot)</li>
+                    <li>You can use dirt, sand, snow and water buckets to terraform and expand your island (just paint with your mouse while having the material selected)</li>
+                    <li>Island portals can be relocated with an island deed</li>
+                    <li>Some things like friends and guilds are currently disabled on islands (will be fixed in the future)</li>
+                </ul>
+            </li>
+            <li>Gnomes
+                <ul>
+                    <li>Gnomes and gnome items can be purchased from the gnome village/island in the archipelago west of Spider Cave</li>
+                    <li>On your island, set up a production chain of gnomes and gnome workshops to mine lumen stones and refine the lumen into lumen coins and lumen shards</li>
+                    <li>To assign a gnome, select it and then use it on the checkpoints in the order the gnome should work. Examples:
+                        <ul>
+                            <li><strong>Mine lumen stones</strong>
+                                <ol>
+                                    <li>Place a lumen stone</li>
+                                    <li>Place a chest</li>
+                                    <li>Select gnome and use it on the lumen stone and then on the chest</li>
+                                    <li>The gnome will go to the lumen stone, start mining (mining takes 12 seconds) and put the lumen into the chest</li>
+                                </ol>
+                            </li>
+                            <li><strong>Produce green lumen squares</strong>
+                                <ol>
+                                    <li>Place a gnome workshop, select green lumen square</li>
+                                    <li>Place a chest</li>
+                                    <li>Select gnome and use it on the chest with the green lumen mined from the stone, then on the gnome workshop and finally on the chest where it should place the manufactured square</li>
+                                </ol>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>For recipes requiring multiple items the pick-up chest will need to contain everything required (the gnome will wait at the chest until it is fulfilled)</li>
+                    <li>Gnomes can also be assigned to just transport items between two chests</li>
+                    <li>Gnomes have some rules on when they will block each other:
+                        <ul>
+                            <li>Gnomes carrying items will be blocked by other gnomes carrying items</li>
+                            <li>Other gnomes will only be blocked by gnomes who are waiting (clock) or are broken (exclamation mark)</li>
+                        </ul>
+                    </li>
+                    <li>Gnome tablets can be used to manage your gnomes (and pause production). When using the tablet while standing on a route checkpoint the gnomes in that route will be highlighted</li>
+                    <li>Gnomes will become broken if their assigned route has its checkpoints changed (e.g. chest or workshop removed) or if their route has been blocked (e.g. by walls or facing off with another gnome). You can resume and let them try again (after fixing the issue) with the gnome tablet</li>
+                    <li>Lumen stones contain 200 lumen by default and can be refilled by using another lumen stone on it</li>
+                    <li>Gnome items have been added as boss drops to dillute the loot table</li>
+                </ul>
+            </li>
+            <li>Dungeon Master
+                <ul>
+                    <li>In the Kingstowns there are now new buildings housing the Dungeon Master</li>
+                    <li>The Dungeon Master lets you enter procedurally generated dungeons and challenges by paying a fee in lumen coins</li>
+                    <li>There's currently just one dungeon available (mostly as a proof of concept) which rewards you with red lumen stones required to craft lumen shards in your gnome factory</li>
+                    <li>Dying in the dungeon will not actually kill you but instead teleport you to the exit room where you get a reward based on how far you made it. This means that dying in a challenge dungeon is risk-free</li>
+                </ul>
+            </li>
+            <li>World Boss Summoner
+                <ul>
+                    <li>In the castles there are now Summoners who can summon world bosses</li>
+                    <li>Summoning a world boss costs lumen shards and can only be done by the King</li>
+                </ul>
+            </li>
+            <li>Lumen shards can also be used to queue up Kingsguards</li>
+            <li>Stuff outside plots and islands will now decay over time. The higher level the player is the longer the decay time is</li>
+            <li>Food will now be eaten directly on inventory selection when having a sword equipped, without having to change active item and manually eat it (similar to how abilities like Bash and Slam work, only warriors for now)</li>
+            <li>Items will now display anything above 1000 with a k notation. You can hover the item to see the exact quantity</li>
+            <li>When typing in local chat a "..." bubble will now show above the player</li>
+            <li>Criminals can now be resurrected in towns (murderers still cannot)</li>
+            <li>You can no longer build blocks or stairs on the max level</li>
+            <li>When changing Z level it no longer does an unnecessary full redraw which should decrease the lag</li>
+            <li>Entities walking into projectiles and spells should now correctly register as a hit</li>
+            <li>Fixed a bug causing doors to get visually stuck after certain sequences</li>
+            <li>When having Zoom enabled it now tints the sprite correctly (e.g. red when hit and blue when frozen) without blur and overflow</li>
+            <li>Earthquake, snow trails etc now renders below entities</li>
+            <li>Fixed one case of black screen and frozen browser after teleport (there may be more, please report!)</li>
+            <li>A lot of different "Server down" errors instead of an infinitely loading spinner</li>
+            <li>Chat bubbles now renders correctly when Zoom is used</li>
+            <li>Fixed some items (such as map fragments) showing "null" instead of "drop" on the action button</li>
+            <li>Crops next to plots can now be harvested (but nothing new can be sowed next to a plot)</li>
+            <li>Various implementations of stuff behind-the-scenes to enable features and changes in future updates</li>
+            <li>Fixed a lot of issues causing various server errors and warnings</li>
+            <li>Most time was obviously spent creating the new server infrastructure which was a massive project. Next patch will focus on all the feature requests/suggestions and bug reports that have piled up</li>
+        </ul>
+        <h2>
+            <span class="release__version">0.4.4</span> <span class="release__date">2020-09-28</span>
+        </h2>
+        <ul>
+            <li>Remade the drinking/eating logic so that you no longer can start eating/drinking multiple times, causing the first timer to cancel the second one prematurely</li>
+            <li>Durability is now shown on broken items</li>
+            <li>It now shows in the log when a pet dies</li>
+            <li>Added a message when you are full explaining that you need to sleep to restore stamina</li>
+            <li>Inn subsidy is now displayed when renting a room (the amount paid by the King)</li>
+            <li>Rewrote the targeting logic for ranged NPCs so that they are now properly shooting projectiles from all angles on big mobs</li>
+            <li>Color buckets will now properly create the color for you if you don't already have it</li>
+            <li>Rewrote the logic for clearing tiles that have lost the underlying floor, fixing various issues such as removing paint from adjacent tiles for no reason at all</li>
+            <li>Stable signs have been restricted to ground level</li>
+            <li>Placing a ceiling now has priority over most other actions (e.g. opening a chest or interacting with a door)</li>
+            <li>Removed filters (grayscale as ghost and height blur) on Firefox since it caused massive FPS drops</li>
+            <li>Fixed a bug causing null input and various issues with the item selector on Crafting Tables</li>
+            <li>Fixed a bug when stabling pets that are fighting, throwing a potentially game-breaking exception on the server and preventing the popup from refreshing</li>
+            <li>Fixed some bugs related to listing pets and taming popup causing server errors due to circular references</li>
+            <li>Fixed a bug with poison messing up the spatial partioning when poison delivers the final blow</li>
+            <li>Fixed a bug spawning mushrooms in strange places</li>
+            <li>Fixed a bug where you could rent multiple rooms and block them forever</li>
+        </ul>
+        <h2>
+            <span class="release__version">0.4.3</span> <span class="release__date">2020-09-14</span>
+        </h2>
+        <ul>
+            <li>Plot signs
+                <ul>
+                    <li>Can be placed on your plot to:</li>
+                    <li>Display a message</li>
+                    <li>Toggle destruction of blocks (only for yourself to prevent accidentally breaking blocks, other players will still never be able to destroy blocks unless you're a PK)</li>
+                    <li>Put the plot for sale</li>
+                    <li>Abandon the plot (items will be removed but you will get the land tax back)</li>
+                </ul>
+            </li>
+            <li>Door and chest access
+                <ul>
+                    <li>You can now configure locked doors and chests on your plot to be accessible by guild members</li>
+                </ul>
+            </li>
+            <li>Monsters now has a chance (based on toughness) to drop a new type of decorative loot</li>
+            <li>You can now use trading tables on plots</li>
+            <li>Crops are now protected in player towns</li>
+            <li>Dragonling owner quota has been adjusted to only allow 2 at a time
+                <ul>
+                    <li>Same owner quota has been applied to Nightmares</li>
+                </ul>
+            </li>
+            <li>Added text clarifying that every water bucket is worth 300 paint in the palette window</li>
+            <li>Fixed a breaking bug where taming legendary mounts messed up the spawn queue</li>
+            <li>Added logging to further investigate error with chat messages disappearing</li>
+        </ul>
+        <h2>
+            <span class="release__version">0.4.2</span> <span class="release__date">2020-09-03</span>
+        </h2>
+        <ul>
+            <li>Digging
+                <ul>
+                    <li>You can now use shovels to dig for dirt, sand and snow which currently have no uses but will be used for crafting later</li>
+                    <li>You can remove growing crops with shovels</li>
+                    <li>Shovels also have another use case which brings me to...</li>
+                </ul>
+            </li>
+            <li>Treasure maps
+                <ul>
+                    <li>Bosses now drop map fragments that you can use to craft treasure maps</li>
+                    <li>The treasure map will mark a spot on the map where you will need to dig to find a treasure chest</li>
+                </ul>
+            </li>
+            <li>Trashcans
+                <ul>
+                    <li>Destroys items permanently</li>
+                    <li>Occasionally some items in abundance (currently rings) with will give you recycling badges that can be used in future sweepstakes</li>
+                </ul>
+            </li>
+            <li>Completely changed the way maps are saved which should cause less issues at the hourly save</li>
+            <li>Slime Attack has been re-enabled
+                <ul>
+                    <li>Every slime in a slime attack is now part of a group (two groups will automatically fight each other so spamming slime attacks will just make them fight each other)</li>
+                    <li>Slimes from slime attacks and Mega Slime also despawn after a while</li>
+                </ul>
+            </li>
+            <li>Guild members can now fight in the arena</li>
+            <li>You can now use things such as pet commands on empty bone piles
+                <ul>
+                    <li>You can now also drop things on empty bone piles</li>
+                </ul>
+            </li>
+            <li>If you target an enemy with the "all, attack!" command your pet will fight for much longer before it stops (it will still stop if you walk away)</li>
+            <li>Summoning pets will now remove their target (but still go back to the hunting arrow if you've used "all, hunt!")</li>
+            <li>You will no longer be able to eat Slime Cake if you're already at full stamina</li>
+            <li>Eye Game price has been reduced to 10 coins</li>
+            <li>Changed the snow color slightly to make it less annoying for the eyes (work in progress)</li>
+            <li>Fixed a bug where snow trees respawned to regular trees after being burnt
+                <ul>
+                    <li>Also fixed a bug where grass was incorrectly spawned beneath</li>
+                    <li>Already bugged trees will stay that way until I fix them manually</li>
+                </ul>
+            </li>
+            <li>Fixed a bug where mine entries were not created properly</li>
+            <li>Fixed a bug where you could get trapped by monsters spawning on top of you</li>
+            <li>Added a cap on sale price of 1 million units</li>
+            <li>Added more logging to debug errors for spawn queue</li>
+        </ul>
+        <h2>
+            <span class="release__version">0.4.1</span> <span class="release__date">2020-08-25</span>
+        </h2>
+        <ul>
+            <li>New login system
+                <ul>
+                    <li>Instead of character name and password you will now use an email and a password</li>
+                    <li>You can reset your password manually by clicking "Trouble login in?"</li>
+                    <li>Characters created before this patch will not have an account in the new login system but can still login the old way by clicking "No email?"</li>
+                    <li><strong>It's highly recommended</strong> that you create a user in the new login system by clicking "Save / Login" when logged in to your old character</li>
+                    <li>If you accidentally save your email to the incorrect character let me know on Discord</li>
+                </ul>
+            </li>
+            <li>New top lists for bosses and war tokens
+                <ul>
+                    <li>Also added a loading indicator to prevent a case where the incorrect top list was shown</li>
+                </ul>
+            </li>
+            <li>When ore veins are reset half-mined blocks will be restored as well (it doesn't happen instantly but in batches)</li>
+            <li>New players now pick their name through their paperdoll and the "Pick a name" mission has been adjusted accordingly</li>
+            <li>Adjusted some loot tables</li>
+            <li>Did some server upgrades</li>
+            <li>Socket protocol has been rewritten to use binary data for transfer
+                <ul>
+                    <li>Also zoned some more events to reduce the wire traffic</li>
+                </ul>
+            </li>
+            <li>Fixed a bug with mine entrances casting incorrect shadows</li>
+            <li>Fixed an error where people were able to create multiple characters with the same name</li>
+            <li>Added more logging for errors and problems in order to debug the ongoing server issues</li>
+        </ul>
+        <h2>
+            <span class="release__version">0.4</span> <span class="release__date">2020-07-21</span>
+        </h2>
+        <ul>
+            <li>New map
+                <ul>
+                    <li>Two new towns</li>
+                    <li>New animals, monsters, flowers and items</li>
+                    <li>Updated sprites for some things and added randomized details on the map</li>
+                    <li>Map is divided between Western and Eastern Kingdom</li>
+                    <li>All plot items, plot costs and pets have been collected and can be retrieved in the new post office</li>
+                    <li>New music</li>
+                </ul>
+            </li>
+            <li>New dungeons
+                <ul>
+                    <li>Three new dungeons</li>
+                    <li>A new boss in an old dungeon</li>
+                    <li>New boss drops:
+                        <ul>
+                            <li>New types of ring attributes</li>
+                            <li>New rare drops</li>
+                            <li>Every boss now has a unique legendary drop</li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li>Kingdom Wars
+                <ul>
+                    <li>The Kings can send reinforcements</li>
+                    <li>Players can pledge allegiance to either Kingdom and fight in the war</li>
+                    <li>The Kingdom borders can be moved by capturing the enemy flags (there's a realtime map in the War Room)</li>
+                    <li>A new memorial for War Lord Kings who manage to siege the other Kingdom</li>
+                    <li>Dealing damage to enemy troops gives you War Tokens (no use yet but will be implemented in a future patch). Note that only damage dealth directly by your player will give tokens so pets will not contribute to your war tokens</li>
+                </ul>
+            </li>
+            <li>Guilds
+                <ul>
+                    <li>Buy a Guild Deed from the Deed Vendor and use it to place a Guild Stone on your plot to start a guild</li>
+                    <li>Friendly fire is disabled for guild mates (even if flagged or PK)</li>
+                    <li>Three roles: Guild Leaders, Guild Elders (can approve applications and kick members) and Members</li>
+                </ul>
+            </li>
+            <li>Player Towns
+                <ul>
+                    <li>Guilds can claim player towns</li>
+                    <li>All guild members can build in the town and the structures are protected</li>
+                    <li>Guild members can claim plots in the town which will act as regular plots (protected also from other guild members)</li>
+                    <li>Note that chests in towns (outside plots) are protected but not locked so anyone can use them</li>
+                    <li>A lot more planned for this that didn't make it into the patch</li>
+                </ul>
+            </li>
+            <li>Mining changes
+                <ul>
+                    <li>New metal: diamond</li>
+                    <li>Iron and copper tools have been nerfed and gold has been buffed</li>
+                    <li>Randomized mines (still with veins but will be reset now and then)</li>
+                </ul>
+            </li>
+            <li>Blacksmithing skill
+                <ul>
+                    <li>Crafting anything will give you XP based on how much raw material is required</li>
+                    <li>Higher blacksmithing skill increases the durability of tools and equipment (copper and better)</li>
+                    <li>Every 20 blacksmithing level adds additional damage to swords crafted (soft cap: level 100)</li>
+                    <li>After a certain level your name and how good quality it is will be inscribed on the item</li>
+                    <li>Base damage for swords has been nerfed but should be compensated by the blacksmithing damage (swords crafted before the patch will keep their damage)</li>
+                </ul>
+            </li>
+            <li>Taming changes
+                <ul>
+                    <li>Tamers can no longer use the bow but...</li>
+                    <li>... now have 3 commands at their disposal (get them from the pet paperdoll):
+                        <ul>
+                            <li>"All, attack!" - shoots a projectile that will target enemies</li>
+                            <li>"All, seek and destroy!" - sets down a target location your combat pets will go to and hunt enemies from (you can use it again to reset it)</li>
+                            <li>List pets - opens a list of all your neraby pets from where you can remotely feed them and tell them to stay</li>
+                        </ul>
+                    </li>
+                    <li>There's now <em>a way</em> to revive dead pets...</li>
+                </ul>
+            </li>
+            <li>Shop changes
+                <ul>
+                    <li>New currency: cents (100 cents = 1 coin)</li>
+                    <li>When putting something for sale you need to choose the currency</li>
+                    <li>Coins are automatically split when you don't have any cents</li>
+                    <li>There's a new exchange office where you can exchange your cents into coins</li>
+                    <li>You can now buy items in bulk (a "Buy many" button will show up in the log after purchasing the first item) </li>
+                </ul>
+            </li>
+            <li>All craftable items and food have been added to the Crafting Table</li>
+            <li>Swordsmanship now adds an additional +1 in damage for every 20 levels</li>
+            <li>Bash and Slam damage have been nerfed to give a maximum of 25 in damage</li>
+            <li>Therer's now a Construction Toolkit for removing floors, ceilings, blocks above/beneath you, beds and stairs</li>
+            <li>New structural items: right-facing stairs, glass panels and fences</li>
+            <li>Portal scrolls will no longer disappear after usage. It costs 5 blue stars to open a portal</li>
+            <li>Iron tools and equipment will now stack again after they have been reparied</li>
+            <li>Drop mode has been changed to always drop the item when clicked. Click it again to enable the auto-drop mode</li>
+            <li>Fishing map has been changed so all player fishing maps have been cleared</li>
+            <li>The King no longer loses the throne when dying</li>
+            <li>The Crown now gives 25 in armor</li>
+            <li>You no longer get flagged for hitting the King in the arena</li>
+            <li>Doors are now managed through a popup where you can lock (if on own plot) or dismantle it</li>
+            <li>Hovering a chat message now shows a timestamp</li>
+            <li>A lot of bug fixes</li>
+            <li>Probably some other stuff I forgot to write down</li>
+        </ul>
+
+        <h2>
+            <span class="release__version">0.3.6</span> <span class="release__date">2020-05-21</span>
+        </h2>
+        <ul>
+            <li><strong>Please do a hard reload in your browser in order to update the client (Ctrl+Shift+R on Win and Cmd+Shift+R on Mac)</strong></li>
+        </ul>
+        <ul>
+            <li>Server optimizations
+                <ul>
+                    <li>I've made huge changes to the whole architecture to better support more concurrent players and pets</li>
+                    <li>If you're interested in the techniques used it's mostly been about implementing quadtrees, spatial partioning, position caches, memoization and updating socket protocols</li>
+                    <li>Unfortunately the socket upgrade made the old transfer protocol non-compatible which means the version ping-pong that usually detects whether a client needs to be updated stopped working as well. Make sure you do a hard reload in case it doesn't work</li>
+                    <li>Some of the more experimental optimizations may actually backfire and give worse performance but I need to measure it first</li>
+                    <li>This patch focuses entirely on server optimizations, another patch will focus on getting better client and rendering performance</li>
+                </ul>
+            </li>
+            <li>PKs in dungeons now show up in a list on the map</li>
+            <li>HP bars now show up on your own sprite as well</li>
+            <li>Added a warning 10 seconds before the hourly server save to prepare you for the lag</li>
+            <li>Chatting will now refresh your AFK timer</li>
+            <li>Your client will no longer automatically try to reconnect after a disconnection
+                <ul>
+                    <li>You will instead get a popup telling you that you have disconnected together with a Reload button</li>
+                    <li>This is a regression but until I've figured out a way to gracefully reconnect a client and avoid all the strangeness that came with it I think this is better</li>
+                    <li>If you experience a lot of disconnections please report it on <a href="https://discord.gg/DX74sGX">Discord</a> together with the reason shown in the popup</li>
+                </ul>
+            </li>
+            <li>The log will now truncate after 500 items</li>
+            <li>Lots of refactoring and micro-optimizations</li>
+        </ul>
+
+        <h2>
+            <span class="release__version">0.3.5</span> <span class="release__date">2020-05-14</span>
+        </h2>
+        <ul>
+            <li>PK changes
+                <ul>
+                    <li>PKs now show up in red on the map (big map, and it does not refresh in realtime)</li>
+                    <li>PKs can no longer use the bank or repair items</li>
+                    <li>PKs and criminals can no longer log out until the status expires</li>
+                    <li>Every kill while being flagged adds to the flag timer. The flag timer is reset with every new kill + 10 minutes</li>
+                    <li>PK houses are now raidable (not protected) while the PK is inside</li>
+                </ul>
+            </li>
+            <li>Throne room PvP
+                <ul>
+                    <li>Claiming the throne now flags you a criminal</li>
+                    <li>Attacking someone claiming the throne makes you a criminal as well (regardless of their status)</li>
+                    <li>The King will also get flagged when attacking someone claiming the throne</li>
+                </ul>
+            </li>
+            <li>NPCs and pets now only blocks you when you have a weapon or taming staff equipped</li>
+            <li>Ghosts no longer block NPCs</li>
+            <li>Your corpse will now override empty bone piles and arrows</li>
+            <li>Being AFK for 10 minutes now logs you out (you will be prompted with a convenient Reload button)</li>
+        </ul>
+
+        <h2>
+            <span class="release__version">0.3.4</span> <span class="release__date">2020-05-13</span>
+        </h2>
+        <ul>
+            <li>Added a Scrap Dealer in Haven
+                <ul>
+                    <li>Turn in your broken iron tools or gear to get a random prize</li>
+                </ul>
+            </li>
+            <li>You can now reorder things in your bank account
+                <ul>
+                    <li>Will do the same for chests but they are a bit more tricky</li>
+                </ul>
+            </li>
+            <li>You can now hold Shift and click the item in your inventory to stash the whole stack immediately</li>
+            <li>Quantity now defaults to 1 after selection when depositing/withdrawing</li>
+            <li>Better onboarding for new players
+                <ul>
+                    <li>Added a visual arrow directing new people to the quests and where to find the quest objectives</li>
+                    <li>Two new missions: 1. Pick a name and 2. Join the Discord server</li>
+                    <li>Added the sword recipe to the Rat Quest giver as well</li>
+                    <li>Increased the size of recipe popup when in portrait mode on mobile (iron ingots ended up below the fold)</li>
+                </ul>
+            </li>
+            <li>Chests are now dismantled via a button
+                <ul>
+                    <li>Triggering it with a pickaxe caused people to accidentally destroy their chests all the time</li>
+                    <li>Dismantling will now give you the chest back</li>
+                </ul>
+            </li>
+            <li>Mana Potions have been added to the Crafting Table</li>
+            <li>Added mana and dust cost in the description of all spells</li>
+            <li>It now shows what kind of animal that is for sale in pet shops</li>
+            <li>It now says in the log when you kill or get killed by someone together with the legal status</li>
+            <li>Monsters will no longer target mounted pets</li>
+            <li>Added a button to re-enter fullscreen mode on mobile devices
+                <ul>
+                    <li>Accessed through the menu</li>
+                    <li>Also added a notfication when exiting telling you how to enter it again</li>
+                </ul>
+            </li>
+            <li>There will now be a notification when the server is saving
+                <ul>
+                    <li>During this the player may experience lag</li>
+                    <li>It's not actually lag but the whole server freezing so all monsters are paused as well</li>
+                </ul>
+            </li>
+            <li>You now get flagged a murder instead of criminal when attacking someone illegally and your pet deals the final blow</li>
+            <li>You can no longer build floors on water</li>
+            <li>Fixed some typos in item descriptions etc</li>
+            <li>A lot of code refactoring and bug fixes</li>
+        </ul>
+
+            <h2>
+                <span class="release__version">0.3.3</span> <span class="release__date">2020-05-04</span>
+            </h2>
+            <ul>
+                <li>New mobile client
+                    <ul>
+                        <li>Completely new client that supports most features of desktop client</li>
+                        <li>Works both in portrait and landscape</li>
+                        <li>New option to configure and move the controls</li>
+                        <li>iOS is still completely broken, you will get like 1 FPS</li>
+                        <li>Still recommended to play on desktop for best experience</li>
+                    </ul>
+                </li>
+                <li>Player levels and experience points
+                    <ul>
+                        <li>Killing mobs now gives you XP</li>
+                        <li>Your level decides your HP and MP</li>
+                        <li>The XP bar can be shown in your Character screen</li>
+                        <li>No upper limit but progression requirement increases exponentially</li>
+                        <li>This means strength and intelligence have been removed</li>
+                    </ul>
+                </li>
+                <li>Top lists
+                    <ul>
+                        <li>There are now global top lists for levels and all the skills</li>
+                        <li>Accessed through your Character screen</li>
+                        <li>Updated once an hour</li>
+                    </ul>
+                </li>
+                <li>Skill progression revamp
+                    <ul>
+                        <li>Each skill now has a level and its own skill point bar</li>
+                        <li>The skill gain is no longer random and each action will add to your skill progression</li>
+                    </ul>
+                </li>
+                <li>Broken items
+                    <ul>
+                        <li>Repairable items will no longer be destroyed when durability goes to 0</li>
+                    </ul>
+                </li>
+                <li>Changed coal requirements when repairing
+                    <ul>
+                        <li>Requirement now depends on the metal: 1 for iron, 3 for copper, 6 for silver and 10 for gold</li>
+                    </ul>
+                </li>
+                <li>New item: crafting table
+                    <ul>
+                        <li>Makes bulk crafting of certain staple items a breeze</li>
+                    </ul>
+                </li>
+                <li>Shop changes
+                    <ul>
+                        <li>You now need to have a chest on the plot you're selling things on</li>
+                        <li>This applies to stable shops as well</li>
+                        <li>You can now see shop stats for the past 7 days so you can keep track of your profit and stock</li>
+                    </ul>
+                </li>
+                <li>New viewport zoom option
+                    <ul>
+                        <li>Should make it playable on high resolution screens</li>
+                        <li>Experimental so use browser zoom instead if it acts up, even though that will cause some rendering issues</li>
+                    </ul>
+                </li>
+                <li>Database refactor
+                    <ul>
+                        <li>Shouldn't affect gameplay but this cleaned up the codebase a lot</li>
+                        <li>World is saved once an hour so if the server crashes you can expect a rollback</li>
+                        <li>Some things such as offline friend requests have stopped working due to this but have been added to the backlog to be fixed</li>
+                    </ul>
+                </li>
+                <li>Swordsmanship changes
+                    <ul>
+                        <li>Swordsmanship now decides how fast you hit instead of hit chance</li>
+                        <li>It's no longer possible to miss when fighting (this applies to bows as well)</li>
+                    </ul>
+                </li>
+                <li>Changed leather recipes
+                    <ul>
+                        <li>Rein is now easier to make</li>
+                        <li>Hat is now actually possible to craft since it's no longer colliding with leather helmet</li>
+                    </ul>
+                </li>
+                <li>Green fish will now add another skill point when consumed for all skills except fishing and taming</li>
+                <li>Mitre of Learning has been renamed to Mitre of Experience and will now give you 20% bonus XP from killing mobs</li>
+                <li>Tons of bug fixes
+                    <ul>
+                        <li>Most of the time was spent on the database refactor which meant having to go through most of the code</li>
+                        <li>Tried to fix a lot of the reported stuff (thank you! &lt;3) but I will spend another patch solely on polishing and fixing the remaining bugs and see what I can do with the rest of the feature requests</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <h2>
+                <span class="release__version">0.3.2</span> <span class="release__date">2019-12-12</span>
+            </h2>
+            <ul>
+                <li>Fishing
+                    <ul>
+                        <li>You can fish everywhere but there are some set spots with schools of specific fishes</li>
+                        <li>Small fish will be used as bait automatically, which is useful when probing for good spots</li>
+                        <li>Once you find a spot the log will notify you and the school type will be visible in the water (with opacity depending how much you've caught at that spot)</li>
+                        <li>Stray fishes and oysters can be caught everywhere but it's random</li>
+                        <li>Spots get depleted but are renewed once in a while. If it takes too long to catch something you can tell that the spot has been overfished</li>
+                        <li>Craft a fishing rod to get started!</li>
+                    </ul>
+                </li>
+                <li>New basic crafting ingredient: stars
+                    <ul>
+                        <li>Stars can only be obtained by cooking a specific type of fish</li>
+                        <li>Used to craft portals and ankhs</li>
+                    </ul>
+                </li>
+                <li>New fauna: rabbits, cows and wolves</li>
+                <li>Animal training and player stables
+                    <ul>
+                        <li>Buy a stable deed from a deed merchant to make your stable</li>
+                        <li>Stable a pet and feed it in order to passively train speed, hp and domesticity while you're away</li>
+                        <li>Feeding it in your stable will also make it available for active training (speed for horses and hp for combat pets)</li>
+                        <li>You can put a pet for sale that other players can buy by accessing your stable sign</li>
+                        <li>The old "Feed" command has been replaced with "Give snack" (in order to maintain domesticity). Feeding in stables will require better food</li>
+                        <li>New training dummy item that you can use in order to actively train your combat pets without engaging with monsters</li>
+                        <li>Work in progress... Lots of things planned for this, such as breeding</li>
+                    </ul>
+                </li>
+                <li>Tamer improvements
+                    <ul>
+                        <li>You will no longer hit your pets with projectiles, meaning you can target enemies much easier</li>
+                        <li>Pets will try to avoid running in front of you</li>
+                        <li>New "Move" command in case a pet is in the way</li>
+                        <li>All professions can use a taming staff to access the pet menu (in order to feed your mount and give instructions) but only tamers can tame and have pets fight for them</li>
+                        <li>Two new tamer spells: heal pets and summon pets
+                            <ul>
+                                <li>Summon pets will teleport all pets next to you that are not stabled, mounted or have been instructed to stay (this means you can bring them inside dungeons and behind doors)</li>
+                            </ul>
+                        </li>
+                        <li>Enemies will now target your pets</li>
+                        <li>Players need to enable PK to kill other players' pets, which will also flag them as criminals</li>
+                        <li>You can no longer stable "useless" pets (goats and cows), only mounts and combat pets</li>
+                        <li>Taming difficulty has been altered. Recommended path for leveling up your taming skill is now: goats -> cows -> dogs -> horses -> wolves -> dragonlings -> ... which brings me to the next feature:</li>
+                    </ul>
+                </li>
+                <li>Legendary mounts
+                    <ul>
+                        <li>Very rare and hard to tame</li>
+                        <li>There can only be one wild legendary mount of each type in the world at the same time</li>
+                    </ul>
+                </li>
+                <li>Hover mouse over item in inventory to see name and description
+                    <ul>
+                        <li>Work in progress</li>
+                    </ul>
+                </li>
+                <li>New crops
+                    <ul>
+                        <li>Carrots (for feeding horses)</li>
+                        <li>Tomatoes (for throwing at other players to see their name)</li>
+                        <li>Grow times are now different for each crop</li>
+                    </ul>
+                </li>
+                <li>New food such as sandwiches</li>
+                <li>Cutting trees now give you logs on each hit
+                    <ul>
+                        <li>Yes, this means you will get 4 times as many logs</li>
+                    </ul>
+                </li>
+                <li>All quests in Haven have been rewritten in order to offer a better tutorial</li>
+                <li>Enemies killed by Slime Attacks will now drop loot</li>
+                <li>Health bar color changed</li>
+                <li>Recipes page can now be accessed through a button in the lower-right corner
+                    <ul>
+                        <li>The wrench is temporary but couldn't find any better icon in the library I'm using</li>
+                    </ul>
+                </li>
+                <li>Drop mode will now automatically be disabled when switching items in the inventory</li>
+                <li>Spiders will now properly protect Spider Queen</li>
+                <li>Rats in Haven rat infestation have been made weaker but will no longer drop meat and hide</li>
+                <li>You can now sell items by clicking the action button</li>
+                <li>Murderers and criminals will show as red and grey in chat</li>
+                <li>King's ledger is now scrollable</li>
+                <li>Big enemies can now fight each other</li>
+                <li>Added some fixes that should prevent some instances of invisible enemies</li>
+                <li>Guards will teleport to avoid them getting stuck and unable to defend a town from monsters
+                    <ul>
+                        <li>This was actually deployed as a hotfix a couple of weeks ago</li>
+                    </ul>
+                </li>
+                <li>Big refactor of the code base
+                    <ul>
+                        <li>Most of the development time was spent on this</li>
+                        <li>This will continue to be a priority moving forward</li>
+                    </ul>
+                </li>
+                <li>Lots of bug fixes and other stuff I forgot to write down</li>
+                <li>A few things that didn't make it into the patch but is planned for the near future:
+                    <ul>
+                        <li>Blacksmithing skill (this will also address a lot of the durability complaints)</li>
+                        <li>PK rework</li>
+                        <li>Rogue rework</li>
+                    </ul>
+                </li>
+            </ul>    
+            <h2>
+                <span class="release__version">0.3.1</span> <span class="release__date">2019-11-08</span>
+            </h2>
+            <ul>
+                <li><strong>Please do a hard reload in your browser in order to update the client (Ctrl+Shift+R on Win and Cmd+Shift+R on Mac)</strong></li>
+            </ul>
+            <ul>
+                <li>Missions
+                    <ul>
+                        <li>Improved new player experience</li>
+                        <li>Give rewards on completion</li>
+                        <li>Work in progress. More missions will be added in the future</li>
+                        <li>Completing all available missions will give you a cosmetic reward that will be unobtainable otherwise</li>
+                    </ul>
+                </li>
+                <li>Recipes list
+                    <ul>
+                        <li>Can be found in the in-game menu</li>
+                        <li><a href="recipes.html">Direct link</a></li>
+                    </ul>
+                </li>
+                <li>Drop mode will now make you automatically drop the selected item when moving to a new tile
+                    <ul>
+                        <li>Drop mode is activated by clicking the downward arrow in the bottom-right corner of the viewport</li>
+                        <li>Still contemplating whether it's more intuitive to drop the item on the tile you move from instead of the tile you go to</li>
+                        <li>This will make crafting iron ingots and other one ingredient recipes much more convenient</li>
+                        <li>Drop mode will work the same as before if not moving (making the item droppable if it has another primary action)</li>
+                    </ul>
+                </li>
+                <li>You can now cast spells, shoot arrows and perform actions while standing on a door</li>
+                <li>Decreased respawn rate of trees and mines to 24 hours
+                    <ul>
+                        <li>This will be set dynamically in the future depending on player count</li>
+                    </ul>
+                </li>
+                <li>Enemy HP is now shown in log after hit</li>
+                <li>Clicking certain items will now show their stats in the log
+                    <ul>
+                        <li>Work in progress. Will add more and more information about items in the log</li>
+                        <li>The same log message is emitted when walking over an item for sale in a shop</li>
+                    </ul>
+                </li>
+                <li>The big map (clicking minimap or pressing Tab) will now show your position</li>
+                <li>The first three times you die you will be automatically teleported to the nearest ankh</li>
+                <li>Cutting down a burnt tree will now spawn a stump</li>
+                <li>Battle music is no longer triggered when hitting non-aggressive NPCs</li>
+                <li>Goat Protector is no longer hostile, but will attack you if you hurt a goat
+                    <ul>
+                        <li>I liked the threat from Goat Protectors but too many new players died from them and logged off, creating graveyards next to Goat Protector spawns</li>
+                    </ul>
+                </li>
+                <li>Updated NPC attack behavior
+                    <ul>
+                        <li>When stuck their movement cooldown will gradually be increased so that they won't move synchronously with you if behind an obstacle or a door</li>
+                        <li>Should make fighting Ghouls much more pleasant</li>
+                    </ul>
+                </li>
+                <li>Decreased timeout of Slam to 12 seconds</li>
+                <li>Earthquake will now trigger AoE around you instead of in front</li>
+                <li>Magic Mushrooms will no longer spawn in water or other inaccessible places
+                    <ul>
+                        <li>Also increased the number of mushrooms on map</li>
+                        <li>Together with mushrooms not spawning in unreachable places it will make it much easier to find mushrooms</li>
+                    </ul>
+                </li>
+                <li>Increased the number of chat messages loaded on start to 20</li>
+                <li>If you have a chest on your plot all your revenue now goes in there
+                    <ul>
+                        <li>Known bug: You need to put something in the chest to "activate" it on your plot</li>
+                        <li>If you don't have a chest on your plot the coins will go into your pocket as before</li>
+                    </ul>
+                </li>
+                <li>Arrow keys no longer make the page jump up and down if your window is smaller than the viewport</li>
+                <li>Slime dropped from killing small slimes now tries to spawn on adjacent tiles if there's already slime on the ground</li>
+                <li>Updated iron arrow recipe</li>
+                <li>Poison ivy seeds no longer drop from trees
+                    <ul>
+                        <li>The rogue class will get an overhaul in a future patch to make melee with poison knives more viable</li>
+                    </ul>
+                </li>
+                <li>New cache busting mechanism that will prevent people from playing with an outdated client
+                    <ul>
+                        <li>This won't work for this patch since the client without the cache busting will be the cached one. Catch 22 :)</li>
+                    </ul>
+                </li>
+                <li>Lots of small QoL things like more log messages on certain actions and other improvements</li>
+                <li>Lots of code refactoring, optimizations and bug fixes</li>
+            </ul>
+        <h2>
+            <span class="release__version">0.3</span> <span class="release__date">10/08/2019</span>
+        </h2>
+        <ul>
+            <li>Dungeons
+                <ul>
+                    <li>Three new dungeons with several floors</li>
+                    <li>New type of monsters</li>
+                    <li>In the depths lurk bosses that may drop unique loot</li>
+                </ul>
+            </li>
+            <li>New type of loot (common, rare, epic and legendary)</li>
+                <ul>
+                    <li>Added rings with different rarity that boost your stats in multiple ways</li>
+                    <li>Added unique legendary items...</li>
+                </ul>
+            </li>
+            <li>New profession: rogue</li>
+                <ul>
+                    <li>Can use knives (<a href="https://canvaslegacy.com/img/03-recipes.png">recipe</a>), bows and bombs (<a href="https://canvaslegacy.com/img/03-recipes.png">recipe</a>)</li>
+                </ul>
+            </li>
+            <li>Warrior abilities</li>
+                <ul>
+                    <li>Added two new abilities for warriors (<a href="https://canvaslegacy.com/img/03-recipes.png">bash</a> and <a href="https://canvaslegacy.com/img/03-recipes.png">slam</a>)</li>
+                    <li>Abilities are automatically triggered when you select them in the inventory while having a sword equipped (preferrably using the numbers on your keyboard)</li>
+                    <li>Every ability has a timeout</li>
+                    <li>Warriors can no longer use bows or spells</li>
+                </ul>
+            </li>
+            <li>Farming
+                <ul>
+                    <li>You can now plant seeds to farm crops that can be harvested for wheat and poison ivy</li>
+                    <li>Crops can be watered for even better yield</li>
+                    <li>Wheat can be used to bake bread (<a href="https://canvaslegacy.com/img/03-recipes.png">recipe</a>) and slime cacke (<a href="https://canvaslegacy.com/img/03-recipes.png">recipe</a>)</li>
+                    <li>Poison ivy can be put on knives on the ground to slather them with poison</li>
+                    <li>Crops on your plot are protected from other players</li>
+                </ul>
+            </li>
+            <li>New plot and land system
+                <ul>
+                    <li>In order to claim a plot you need to buy a house deed from real estate agents you can find in towns</li>
+                    <li>When the house deed is selected you can draw your plot anywhere you want outside towns and protected areas</li>
+                    <li>The bigger the plot the more it costs to claim</li>
+                    <li>You can own multiple plots but they get more expensive the more land you own</li>
+                </ul>
+            </li>
+            <li>New spells
+                <ul>
+                    <li>Fire Wall (<a href="https://canvaslegacy.com/img/03-recipes.png">recipe</a>)</li>
+                    <li>Chain Lightning (<a href="https://canvaslegacy.com/img/03-recipes.png">recipe</a>)</li>
+                    <li>Earthquake (<a href="https://canvaslegacy.com/img/03-recipes.png">recipe</a>)</li>
+                    <li>Added a small timeout for spells preventing spell spam</li>
+                </ul>
+            </li>
+            <li>Fire arrows
+                <ul>
+                    <li>Walk into a fireplace when you have the bow equipped to set your next arrow on fire</li>
+                    <li>Fire arrows and other fire attacks can cause forest fires</li>
+                    <li>Charcoal from forest fires can be used to craft coal (<a href="https://canvaslegacy.com/img/03-recipes.png">recipe</a>)</li>
+                </ul>
+            </li>
+            <li>Slime attack
+                <ul>
+                    <li>Can be bought from Slime Guy in Kingstown for 100 slimes</li>
+                    <li>Can be released to cause havoc</li>
+                    <li>Monsters killed from slime attacks currently do not drop loot</li>
+                    <li>Work in progress</li>
+                </ul>
+            </li>
+            <li>New music in dungeons and boss rooms</li>
+            <li>A lot of rebalancing of drop rates etc</li>
+            <li>A lot of bug fixes</li>
+        </ul>
+        <h2>
+            <span class="release__version">0.2.4</span> <span class="release__date">05/21/2017</span>
+        </h2>
+        <ul>
+            <li>Added touch controls for mobile devices
+                <ul>
+                    <li>Extremely rough and early version</li>
+                    <li>A lot of things are unsupported</li>
+                </ul>
+            </li>
+            <li>Map is now lazy loaded</li>
+                <ul>
+                    <li>This should drastically reduce load times</li>
+                    <li>As the map grows with the upcoming dungeons patch this was a necessary prerequisite</li>
+                </ul>
+            </li>
+            <li>Various small fixes</li>
+        </ul>
+        <h2>
+            <span class="release__version">0.2.3</span> <span class="release__date">05/07/2017</span>
+        </h2>
+        <ul>
+            <li>Rewritten front-end
+                <ul>
+                    <li>Complete rewrite to support future development</li>
+                    <li>The Z level blur is back and looks better</li>
+                    <li>I may have forgotten to port some features so let me know if there's anything missing or strange stuff going on!</li>
+                </ul>
+            </li>
+            <li>Map changes
+                <ul>
+                    <li>A few new buildings and stuff</li>
+                    <li>The castle now has a bigger entrance, making it more convenient when several players are fighting the Kingsguards</li>
+                    <li>Some tile graphics have been changed and improved</li>
+                </ul>
+            </li>
+            <li>Lots of new music
+                <ul>
+                    <li>All towns and areas now have their own themes</li>
+                    <li>See <a href="credits.html">credits</a> for list</li>
+                </ul>
+            </li>
+            <li>Added a friends system
+                <ul>
+                    <li>You can now chat privately with your friends that are online</li>
+                    <li>Click on a name in chat to add them as a friend</li>
+                    <li>Work in progress</li>
+                </ul>
+            </li>
+            <li>Added fireplace
+                <ul>
+                    <li><a href="img/fireplace.png">Recipe</a></li>
+                    <li>Walk into the fireplace with a raw meat equipped to cook it</li>
+                    <li>Cooked meat has a slightly better regeneration rate than apples</li>
+                </ul>
+            </li>
+            <li>Changed drop mode for equippables
+                <ul>
+                    <li>You no longer activate drop mode by double-clicking an item in inventory</li>
+                    <li>There's now a button in the bottom-right corner of the viewport to toggle drop mode</li>
+                </ul>
+            </li>
+            <li>You can now click on the item you're stashing/withdrawing to manually enter the amount you wish to stash/withdraw</li>
+            <li>The screen will now be tinted red when you are low on health</li>
+            <li>Unequip is now always prioritised before using item on ground</li>
+            <li>A new spatial partioning engine in the back-end</li>
+            <li>Tons of bug fixes
+                <ul>
+                    <li>Too many to list :)</li>
+                    <li>A lot of indirect fixes came with the front-end rewrite</li>
+                </ul>
+            </li>
+            <li>Created a subreddit which will act as the official forum for Canvas Legacy: <a href="https://www.reddit.com/r/CanvasLegacy">https://www.reddit.com/r/CanvasLegacy</a></li>
+            <li>Added an official Discord server: <a href="https://discord.gg/DX74sGX">https://discord.gg/DX74sGX</a></li>
+        </ul>
+        <h2>
+            <span class="release__version">0.2.2</span> <span class="release__date">06/15/2016</span>
+        </h2>
+        <ul>
+            <li>New rendering engine
+                <ul>
+                    <li>Looks the same but should render much much faster</li>
+                    <li>Still not completely done and probably has a few issues still</li>
+                    <li>This is a step toward making it playable on mobile</li>
+                </ul>
+            </li>
+            <li>Added helmets and headgear
+                <ul>
+                    <li>Armor is now divided in helmets and body armor</li>
+                    <li>Added a bunch of cosmetical hats</li>
+                    <li><a href="http://canvaslegacy.wikia.com/wiki/Clothing_and_armor">List of clothing and armor</a></li>
+                </ul>
+            </li>
+            <li>Added clothes
+                <ul>
+                    <li>You can now change your shirt</li>
+                    <li><a href="http://canvaslegacy.wikia.com/wiki/Shirt">Shirt crafting and dyeing guide</a></li>
+                </ul>
+            </li>
+            <li>You can now repair iron items</li>
+            <li>Dogs and dragonlings are now much faster</li>
+            <li>Added <a href="http://canvaslegacy.wikia.com/wiki/Mana_potion">mana potions</a></li>
+            <li>Equipping armor will now show current armor and difference in the log</li>
+            <li>Armor added to character window</li>
+            <li>Gaining skill and attributes will now show current value in the log</li>
+            <li>Dying won't kill your sucession streak until another king is coronated</li>
+            <li>Chat input will no longer autocomplete</li>
+            <li>Fixed some character encoding bugs in the chat</li>
+            <li>Fixed some issues when trading</li>
+            <li>Fixed some desync issues when mounted</li>
+            <li>Fixed a few issues causing the server to crash</li>
+            <li>Fixed a lot of minor bugs</li>
+        </ul>
+        <h2>
+            <span class="release__version">0.2.1</span> <span class="release__date">04/18/2016</span>
+        </h2>
+        <ul>
+            <li>Complete overhaul of the UI
+                <ul>
+                    <li>Viewport changed from square to oblong</li>
+                    <li>Settings and information moved into a menu which can be accessed via the button in the top-right corner</li>
+                    <li>Log and chat separated into tabs and moved beneath the viewport</li>
+                    <li>When viewing chat, log messages will temporarily show up on top</li>
+                    <li>Log messages are now prepended instead of appended, meaning the newest message will be shown first</li>
+                    <li>Palette and paint controls have been hidden from normal view and are togglable via UI button</li>
+                    <li>Action button moved on top of viewport. After change it will be visible a few seconds and then automatically hidden</li>
+                    <li>Character information moved into a popup accessible via UI button (now includes profession info)</li>
+                    <li>Inventory moved beneath the viewport</li>
+                    <li>New graphics for health and mana</li>
+                    <li>King and taxes are now displayed above the viewport</li>
+                </ul>
+            </li>
+            <li>Added a new loading screen</li>
+            <li>Added a limit to how many Kingsguards can be hired at the same time (currently 40)</li>
+            <li>Default regeneration is now much slower, meaning apples will be more important when fighting</li>
+            <li>New players now start with 3 apples and 10 stones</li>
+            <li>Important popups for new players will no longer be closed on movement</li>
+            <li>Trees will no longer grow back if a floor tile has been placed</li>
+            <li>Fixed a bug prevent non-royal players from walking in the tunnel beneath the castle</li>
+            <li>Fixed a bug enabling Kingsguards to walk on the red carpet</li>
+            <li>Fixed a bug messing up the trade window after banking</li>
+            <li>Shock wave spell now shows up correctly on other players' screens</li>
+            <li>Fixed some missing inventory graphics</li>
+            <li>Fixed a bug making NPCs able to walk on water</li>
+            <li>Lots of other small bug fixes I forgot to write down</li>
+        </ul>
+        <h2>
+            <span class="release__version">0.2</span> <span class="release__date">03/13/2016</span>
+        </h2>
+        <ul>
+            <li>Added a third dimension for height
+                <ul>
+                    <li>You can now build and move on the Z level (up and down)</li>
+                    <li><a href="http://canvaslegacy.wikia.com/wiki/Building">Building guide</a></li>
+                    <li>Upper levels of the mountains only contain normal ore at the moment</li>
+                    <li>You can currently not dig below ground level but it's an upcoming feature</li>
+                    <li>This is work in process and any feedback is appreciated</li>
+                </ul>
+            </li>
+            <li>Added new items
+                <ul>
+                    <li><a href="http://canvaslegacy.wikia.com/wiki/Shovel">Shovel</a></li>
+                    <li><a href="http://canvaslegacy.wikia.com/wiki/Bed">Bed</a></li>
+                    <li><a href="http://canvaslegacy.wikia.com/wiki/Table">Table</a></li>
+                    <li><a href="http://canvaslegacy.wikia.com/wiki/Stool">Stool</a></li>
+                    <li><a href="http://canvaslegacy.wikia.com/wiki/Hammer">Hammer</a></li>
+                    <li><a href="http://canvaslegacy.wikia.com/wiki/Iron_slab">Iron slab</a></li>
+                    <li><a href="http://canvaslegacy.wikia.com/wiki/Iron_plate">Iron plate</a></li>
+                    <li><a href="http://canvaslegacy.wikia.com/wiki/Staircase">Staircase</a></li>
+                </ul>
+            </li>
+            <li>Added easier player trading
+                <ul>
+                    <li>When sitting down at a table you can open a trade dialogue with another player at the table</li>
+                    <li>Tables will be used for other stuff in the future (minigames etc)</li>
+                </ul>
+            </li>
+            <li>Lots of refactoring of the Canvas Legacy engine</li>
+        </ul>
+        <h2>
+            <span class="release__version">0.1.1</span> <span class="release__date">12/08/2015</span>
+        </h2>
+        <ul>
+            <li>Added possibility to sort your inventory on the fly using drag'n'drop</li>
+            <li>Changed equipped state to be persistent
+                <ul>
+                    <li>Equip a sword, switch to another item and back again - your sword will be equipped automatically</li>
+                </ul>
+            </li>
+            <li>Added durability bar for items in the bank</li>
+            <li>Shop owners will now see the list price when walking over goods in their shop</li>
+            <li>Improved some of the network code to reduce desync and rubber banding
+                <ul>
+                    <li>This is work in progress but you should experience a bit less issues</li>
+                </ul>
+            </li>
+            <li>You can now repair iron tools and weapons</li>
+            <li>Changed coal needed to repair from 5 to 10</li>
+            <li>Fire swords now require one level 1 gem to be repaired</li>
+            <li>Adjusted probability to find gems (less common)</li>
+            <li>Freshly tamed animals start with a domesticity of 5
+                <ul>
+                    <li>This means you need to feed them right away if you want to keep them tame</li>
+                </ul>
+            </li>
+            <li>Fixed so that you can loot player corpses on available plots</li>
+            <li>Some minor additions (text changes etc)</li>
+            <li>A few security and reliability fixes</li>
+        </ul>
+        <h2>
+            <span class="release__version">0.1</span> <span class="release__date">11/22/2015</span>
+        </h2>
+        <ul>
+            <li>Added taming
+                <ul>
+                    <li>Added new tamer profession</li>
+                    <li>Added taming staff (<a href="http://www.canvaslegacy.com/img/taming-crafting.png">crafting guide</a>)</li>
+                    <li>Added taming skill</li>
+                    <li>Stand next to a creature as a tamer with the taming staff equipped to tame</li>
+                </ul>
+            </li>
+            <li>Added pets
+                <ul>
+                    <li>Pets are persistent even when you are offline but will go wild after a while if you don't feed them</li>
+                    <li>Battleworthy pets will attack anything that either attacks you/them or you attack</li>
+                    <li>If you move away they will stop attacking and follow you instead</li>
+                    <li>Stand next to a tamed pet with your taming staff to open an action and info popup</li>
+                    <li>Pets require either apples or meat (new item dropped by most animals)</li>
+                    <li>Domesticity will steadily decrease and when it hits 0 the pet will go wild</li>
+                    <li>Feeding will refill domesticity and temporarily increase regeneration</li>
+                </ul>
+            </li>
+            <li>Added stables
+                <ul>
+                    <li>Stabling a pet costs 20 coins and will freeze their domesticity meaning they won't go wild</li>
+                </ul>
+            <li>Added horses and chariots
+                <ul>
+                    <li>Horses you have tamed can be reined with a chariot (<a href="http://www.canvaslegacy.com/img/taming-crafting.png">crafting guide</a>)</li>
+                    <li>Stand next to your horse and use the chariot to attach it</li>
+                    <li>Use the rein on the chariot to enter it and start riding</li>
+                    <li>Use the rein again to get off</li>
+                </ul>
+            </li>
+            <li>Added lots of new NPCs
+                <ul>
+                    <li>Goats</li>
+                    <li>Goat Protectors</li>
+                    <li>Horses</li>
+                    <li>Dogs</li>
+                    <li>Goblin Archers</li>
+                    <li>Orc Mages</li>
+                    <li>Dragons</li>
+                    <li>Dragonlings</li>
+                </ul>
+            </li>
+            <li>Added catapults
+                <ul>
+                    <li>Catapults are located east of Kingstown</li>
+                    <li>Using them will launch stones at the castle hitting the walls and eventually the Kingsguards</li>
+                    <li>The King can fortify the walls at the Master Builder outside the castle</li>
+                    <li>When the wall is at 0 foritification the stones will hit the throne room and the Kingsguards</li>
+                    <li>In the future it will possible to build your own catapults</li>
+                </ul>
+            </li>
+            <li>Added gems
+                <ul>
+                    <li>Gems will drop randomly when mining</li>
+                    <li>Combine two gems of the same sort horisontally to create a better gem</li>
+                    <li>Put a gem in the middle of the cross when crafting a sword to add fire damage</li>
+                </ul>
+            </li>
+            <li>Added succession stone
+                <ul>
+                    <li>The succession is displayed on a raised stone in Kingstown</li>
+                </ul>
+            </li>
+            <li>Added health bars</li>
+            <li>Kingsguards will not overlap each other or walk on the red carpet unless attacked</li>
+            <li>Kingsguards will leave room for the King</li>
+            <li>Cooldown is now displayed on the action button</li>
+            <li>Lots of fixes regarding projectiles</li>
+            <li>Paint will no longer render on top of natural obstacles (trees etc)</li>
+            <li>Lots of changes to the game logic to accomodate all the new things</li>
+            <li>Fixed bugs related to intelligence and strength
+                <ul>
+                    <li>Your max health and mana should be 100 + stat (so 18 strength should result in 118 health and 64 intelligence should result in 164 mana)</li>
+                    <li>If it's still broken send me a message on Facebook and I'll sort it out</li>
+                </ul>
+            </li>
+            <li>Fixed a major bug related to inn rooms</li>
+            <li>Fixed a lot of minor issues and bugs</li>
+            <li>Made a lot of optimizations (both in front and back ends)</li>
+            <li>A lot of minor changes I forgot to write down :)</li>
+        </ul>
+
+        <h2>
+            <span class="release__version">0.0.6</span> <span class="release__date">7/22/2015</span>
+        </h2>   
+   
+        <ul>
+            <li>Changed how durability works
+                <ul>
+                    <li>Used items now end up in their own inventory slots and can be dropped</li>
+                    <li>Durability is now shown as a bar beneath the item</li>
+                    <li>Unused items are stacked as before</li>
+                    <li>Swords and axes now break as well</li>
+                </ul>
+            </li>
+            <li>Added new axes and pickaxes
+                <ul>
+                    <li>You can now craft gold, silver and bronze axes/pickaxes</li>
+                    <li>Better material means better speed and better durability</li>
+                </ul>
+            </li>
+            <li>Added anvil
+                <ul>
+                    <li>Gold, silver and bronze items can be repaired</li>
+                    <li>Repairing an item costs 1 ingot of the item's material plus 5 coal</li>
+                    <li>Anvils will have other uses as well in the future</li>
+                </ul>
+            </li>
+            <li>Added armor
+                <ul>
+                    <li>Armor reduces the physical damage taken</li>
+                    <li><a href="http://www.canvaslegacy.com/img/armor.png">Crafting recipes</a></li>
+                    <li>Hide to make leather armor is dropped from rats</li>
+                </ul>
+            </li>
+            <li>Added a wiki
+                <ul>
+                    <li>Can be found at <a href="http://canvaslegacy.wikia.com/wiki/Canvas_Legacy_Wikia">canvaslegacy.wikia.com</a></li>
+                    <li>Feel free to contribute</li>
+                </ul>
+            </li>
+            <li>Health points, mana and damage overall have been multiplied by 10</li>
+            <li>Added map and mini-map
+                <ul>
+                    <li>Click the mini-map or press tab to open/close the full map</li>
+                    <li>The maps are currently not updated dynamically but will be in the future</li>
+                </ul>
+            </li>
+            <li>Kingsguards are now persistent between server resets until they are killed</li>
+            <li>Kingsguards now cost 50 coins but have twice as much health</li>
+            <li>Added new plots</li>
+            <li>Made several changes to the map</li>
+            <li>Reworked how movement works
+                <ul>
+                    <li>Keys pressed will always have precedence</li>
+                    <li>If you have other keys pressed when releasing a key the character will move in accordance with the key you pressed down last</li>
+                </ul>
+            </li>
+            <li>Added possibility to hide full log and expand chat
+                <ul>
+                    <li>When log is hidden new log events will show up briefly in the bottom left corner</li>
+                </ul>
+            </li>
+            <li>Fixed a bug where spells and arrows went through enemies</li>
+            <li>Becoming criminal no longer overrides your murder status</li>
+            <li>Murderers and criminals can no longer sleep at inns</li>
+            <li>Increased paint per bucket to 300</li>
+            <li>Decreased cost of erasing to 1</li>
+            <li>Added ability for admins to ban people from chat
+                <ul>
+                    <li>Don't be rude :)</li>
+                </ul>
+            </li>
+            <li>Fixed lots of minor bugs</li>
+        </ul>
+
+
+        <h2>
+            <span class="release__version">0.0.5</span> <span class="release__date">6/20/2015</span>
+        </h2>    
+    
+        <ul>
+            <li>Added professions/classes
+                <ul>
+                    <li>Currently two available: warrior and mage</li>
+                    <li>Can be changed at any time at Job Centres in all towns except Haven</li>
+                </ul>
+            </li>
+            <li>Added Magic
+                <ul>
+                    <li>Spells are created with magic dust (<a href="http://www.canvaslegacy.com/img/spells.png">crafting recipes</a>)</li>
+                    <li>Monsters and magic mushrooms randomly spawn dust</li>
+                    <li>Mages can use all spells, warriors can only use non-elemental ones</li>
+                    <li>Casting a spell uses dust as well as mana</li>
+                </ul>
+            </li>
+            <li>Added strength and intelligence
+                <ul>
+                    <li>Strength is gained by fighting, lumberjacking and mining</li>
+                    <li>For every 10 strength your max health points increase by 1</li>
+                    <li>Intelligence is gained by casting spells</li>
+                    <li>For every 10 intelligence your max mana increases by 1</li>
+                </ul>
+            </li>
+            <li>Added staff (mage weapon, <a href="http://www.canvaslegacy.com/img/staff.png">crafting recipe</a>)</li>
+            <li>Standard regeneration rate has been decreased</li>
+            <li>Added apples
+                <ul>
+                    <li>Eating an apple increases your regeneration rate for a short while</li>
+                    <li>You cannot move or fight while eating</li>
+                    <li>Apples are spawned randomly from trees</li>
+                </ul>
+            </li>
+            <li>All items are now droppable
+                <ul>
+                    <li>After selecting an item with a primary action (like equip, eat and cast) simply select the item again to put it in "drop mode"</li>
+                    <li>While an item is in "drop mode" you can drop it like any other item until you select it again or click another item in the inventory</li>
+                </ul>
+            </li>
+            <li>When being killed in the arena you now end up outside of it instead of dying and losing your stuff</li>
+            <li>Plot prices have been increased</li>
+            <li>You can now only own 1 plot</li>
+            <li>Added basic allowance
+                <ul>
+                    <li>The King can set a basic allowance for new players which means they don't have to pay taxes until they've earned X coins/wood/stone</li>
+                </ul>
+            </li>
+            <li>Mountains now respawn just as trees and flowers</li>
+            <li>Various cosmetic fixes and additions</li>
+            <li>Various optimizations</li>
+            <li>Lots of bug fixes</li>
+        </ul>
+
+        <h2>
+            <span class="release__version">0.0.4d</span> <span class="release__date">6/9/2015</span>
+        </h2>    
+
+        <ul>
+            <li>Fixed so that if you or an NPC die on a corpse or bone pile with loot the new corpse will spawn next to it instead of replacing it</li>
+            <li>Fixed some other minor bugs</li>
+        </ul>
+
+        <h2>
+            <span class="release__version">0.0.4c</span> <span class="release__date">6/5/2015</span>
+        </h2>    
+
+        <ul>
+            <li>Chests can no longer be destroyed by shooting arrows on them</li>
+            <li>Arrows hitting static NPCs will now disappear instead of being locked on the ground</li>
+            <li>Fixed a bug preventing some corpses from decaying</li>
+            <li>NPCs can no longer be pushed through doors</li>
+            <li>Fixed a bug where an invisible roof was created after destroying a stone wall</li>
+        </ul>
+
+        <h2>
+            <span class="release__version">0.0.4b</span> <span class="release__date">6/2/2015</span>
+        </h2>    
+
+        <ul>
+            <li>Dying on a door will no longer make your corpse disappear (it will end up besides it)</li>
+            <li>Dying next to an NPC will no longer make the corpse inaccessible (it will end up besides it)</li>
+            <li>Room prices lowered to 5 coins</li>
+            <li>Regrow time for trees and flowers has been reduced</li>
+            <li>Corpse and bones decay time has been reduced</li>
+            <li>Increased Kingsguards' aggression period</li>
+            <li>Minor cosmetic changes</li>
+        </ul>
+
+        <h2>
+            <span class="release__version">0.0.4</span> <span class="release__date">5/31/2015</span>
+        </h2>    
+
+        <ul>
+            <li>Added taxes
+                <ul>
+                    <li>The King can set taxes in the castle</li>
+                    <li>Paid taxes end up in a chest in one of the towers that only the King can access</li>
+                    <li>The current tax rates are shown in the top-right corner</li>
+                </ul>
+            </li>
+            <li>Coins are now items
+                <ul><li>You need to have them in your inventory to buy things</li></ul>
+            </li>
+            <li>Added spiders</li>
+            <li>Added spider temple</li>
+            <li>Enemies now drop their loot on the ground</li>
+            <li>Added new weapon: bow
+                <ul>
+                    <li>Bows require arrows in your inventory</li>
+                    <li><a href="http://www.canvaslegacy.com/img/bow-and-arrow.png">Recipe for bows and arrows</a></li>
+                </ul>
+            </li>
+            <li>Inn changes
+                <ul>
+                    <li>Rooms now cost 10 coins</li>
+                    <li>The King can set a subsidy on room prices, reducing the price</li>
+                    <li>Subsidies are taken automatically from the tax and depot chests</li>
+                    <li>If the tax and depot chests are empty rooms will cost 10 coins regardless of subsidies</li>
+                </ul>
+            </li>
+            <li>King changes
+                <ul>
+                    <li>You will no longer lose your royal title when logging out</li>
+                    <li>It now takes 30 seconds to claim the throne</li>
+                </ul>
+            </li>
+            <li>Added Kingsguards
+                <ul>
+                    <li>Kingsguards are hired from the commander in the castle for 25 gold each</li>
+                    <li>They will attack anyone trying to claim the throne but can be killed</li>
+                    <li>Kingsguards disappear at server restart once a day (will fix this)</li>
+                </ul>
+            </li>
+            <li>Added an arena in the main city
+                <ul>
+                    <li>People can attack and kill each other in the arena without punishment</li>
+                </ul>
+            </li>
+            <li>Loot now show up in the log (together with paid taxes) </li>
+            <li>Monsters will now chase you for a while after being attacked, even if you're outside their territory</li>
+            <li>Added new and bigger plots</li>
+            <li>Trees and flowers will now grow back after a while</li>
+            <li>A lot of minor changes and fixes</li>
+        </ul>
+
+		<h2>
+			<span class="release__version">0.0.3</span> <span class="release__date">5/17/2015</span>
+		</h2>    
+    
+        <ul>
+            <li>Fixed some major desync issues (the improvement should be notable)</li>
+            <li>Started the migration to new backup system which will reduce rollback time at server restart
+                <ul>
+                    <li>Some kind of rollback will still happen at least once a day but it will mostly affect the map and hopefully not skills or inventory anymore</li>
+                    <li>It's far from done but the ambition is to have zero rollbacks</li>
+                </ul>
+            </li>
+            <li>Fixed inn bug causing permanent ownership of rooms</li>
+            <li>You no longer have to Enable PK to attack criminals and murderers</li>
+            <li>Decreased hit sound effect volume</li>
+            <li>Fixed bug causing music to play even though you had it turned off</li>
+            <li>Added cache busting</li>
+            <li>Various minor fixes</li>
+        </ul>
+        
+		<h2>
+			<span class="release__version">0.0.2</span> <span class="release__date">5/15/2015</span>
+		</h2>
+		<ul>
+            <li>Added Town Guards
+                <ul>
+                    <li>These will patrol the town perimeters and kill any enemies that get within</li>
+                </ul>
+            </li>
+            <li>Added music by the extremely talented 500Destinies
+                <ul>
+                    <li>500Destinies is one of the first players ever on Canvas Legacy. Make sure to check out his <a href="https://soundcloud.com/500destinies">SoundCloud</a> and <a href="https://www.facebook.com/500destinies">Facebook</a>!</li>
+                    <li>The music will be played in Haven (the starting town) only</li>
+                </ul>
+            </li>
+            <li>Reworked how inns work
+                <ul>
+                    <li>You can no longer be locked inside a room</li>
+                    <li>The room is yours until you leave the building</li>
+                </ul>
+            </li>
+            <li>Added sound effects when fighting</li>
+            <li>You can now destroy floors, roofs, chests, doors
+                <ul>
+                    <li>Use iron axe to destroy floors, roofs and doors</li>
+                    <li>Use iron pick axe to destroy chests (things inside will disappear!)</li>
+                </ul>
+            </li>
+            <li>Added decay to corpses and bone piles
+                <ul>
+                    <li>Corpses with loot will remain until looted</li>
+                </ul>
+            </li>
+            <li>Various cosmetic changes to the UI</li>
+            <li>Current King is now displayed at the top right corner</li>
+            <li>Changed various things on the map
+                <ul>
+                    <li>Not taken effect yet, will probably require a wipe of the whole map</li>
+                </ul>
+            </li>
+            <li>Increased how far you can hear in local chat
+                <ul>
+                    <li>You now hear players a few tiles outside of your screen</li>
+                </ul>
+            </li>
+            <li>Cementary and haunted house are no longer safe zones</li>
+            <li>Added various help pop-ups</li>
+            <li>Increased Orcs' territory
+                <ul>
+                    <li>This is used to calculate how close you need to go before they go aggressive</li>
+                </ul>
+            </li>
+            <li>Changed Grid Helper to a toggable
+                <ul>
+                    <li>Just click the button or press Ctrl to switch between on and off</li>
+                </ul>
+            </li>
+            <li>Reduced murderer timeout from 24 hours to 1 hour
+                <ul>
+                    <li>I still feel 24 hours is more appropriate but until there's a way for flagged characters to resurrect and sleep I think it's a bit harsh</li>
+                </ul>
+            </li>
+            <li>A few secret changes and additions</li>
+
+            <li>Fixed a bug where the cat went mental for no reason sometimes</li>
+            <li>Fixed a breaking bug affecting Firefox users</li>
+            <li>Fixed a couple of chat bugs</li>
+            <li>Fixed various bugs causing doors to disappear
+                <ul>
+                    <li>It's no longer possible to accidentally release ghouls into the wild</li>
+                </ul>
+            </li>
+            <li>Fixed a bug causing planks not updating correctly in inventory</li>
+            <li>No longer possible to vandalize the castle</li>
+            <li>No longer possible to place doors, roofs and floors in towns</li>
+            <li>Fixed various minor bugs</li>
+
+		</ul>
+	</div>
+</div>
+
+</body>
+</html>

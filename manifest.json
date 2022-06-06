@@ -1,0 +1,15 @@
+{
+    "short_name": "Canvas Legacy",
+    "name": "Canvas Legacy",
+    "icons": [
+      {
+        "src": "android-chrome-512x512.png",
+        "type": "image/png",
+        "sizes": "512x512"
+      }
+    ],
+    "start_url": "/?source=pwa",
+    "display": "fullscreen",
+    "scope": "/",
+    "description": "Canvas Legacy"
+  }

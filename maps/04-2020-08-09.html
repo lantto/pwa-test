@@ -1,0 +1,78 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+
+    <title>Map of 0.4</title>
+    <meta name="description" content="Map of 0.4">
+    <meta name="viewport" content="width=device-width">
+    <meta property="og:title" content="Map of 0.4" />
+    <meta property="og:image" content="https://canvaslegacy.com/maps/04/preview.png" />
+
+    <style>
+        body {
+            background-color: #0012ff;
+        }
+
+        img {
+            position: absolute;
+            width: 1600px;
+            height: 1200px;
+        }
+
+        .slidecontainer {
+            z-index: 99999;
+            position: absolute;
+            left: 30px;
+            top: 30px;
+            color: white;
+        }
+
+        #z-level {
+            width: 150px;
+            height: 20px;
+            margin: 0;
+            margin-left: 10px;
+            transform-origin: 75px 75px;
+            transform: rotate(-90deg);
+        }
+
+        p {
+            margin: 0 0 10px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <img id="map2" src="04-2020-08-09/map2.jpg" />
+        <img id="map3" src="04-2020-08-09/map3.jpg" />
+        <img id="map4" src="04-2020-08-09/map4.jpg" />
+        <img id="map5" src="04-2020-08-09/map5.jpg" />
+        <img id="map6" src="04-2020-08-09/map6.jpg" />
+        <img id="map7" src="04-2020-08-09/map7.jpg" />
+        <img id="map8" src="04-2020-08-09/map8.jpg" />
+        <div class="slidecontainer">
+            <p>Z-level</p>
+            <input type="range" id="z-level" orient="vertical" name="z-level" min="4" max="9" value="9">
+        </div>
+    </div>
+    <script
+        src="https://code.jquery.com/jquery-3.1.1.min.js"
+        integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+        crossorigin="anonymous"></script>
+    <script>
+            $('#z-level').on('input change', function() {
+                $('img').hide();
+
+                let len = parseInt($(this).val());
+                for (let z = 0; z < len; z++) {
+                    $('#map' + z).show();
+                }
+            });
+    </script>
+</body>
+
+</html>
