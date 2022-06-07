@@ -1,15 +1,19 @@
 {
-    "short_name": "Canvas Legacy",
-    "name": "Canvas Legacy",
-    "icons": [
-      {
-        "src": "android-chrome-512x512.png",
-        "type": "image/png",
-        "sizes": "512x512"
-      }
-    ],
-    "start_url": "/pwa-test/?source=pwa",
-    "display": "fullscreen",
-    "scope": "/pwa-test/",
-    "description": "Canvas Legacy"
-  }
+  "name": "Canvas Legacy",
+  "icons": [
+    {
+      "src": "pwa-512x512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    },
+    {
+      "src": "pwa-192x192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    }
+  ],
+  "start_url": "/pwa-test/?source=pwa",
+  "display": "fullscreen",
+  "scope": "/pwa-test/",
+  "description": "Canvas Legacy"
+}
