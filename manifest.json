@@ -13,7 +13,7 @@
     }
   ],
   "start_url": "/pwa-test/?source=pwa",
-  "display": "standalone",
+  "display": "fullscreen",
   "scope": "/pwa-test/",
   "description": "Canvas Legacy"
 }
